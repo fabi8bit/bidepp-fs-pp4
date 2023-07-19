@@ -1,5 +1,6 @@
 body {
     background-color: #F9FAFC;
+    color: #dfdfdf;
 }
 
 .brand {
@@ -78,9 +79,9 @@ body {
     height: 100%;
     width: 150%;
     background: #445261;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
-    transform: skew(15deg);
+    -webkit-transform: skew(20deg);
+    -moz-transform: skew(20deg);
+    transform: skew(20deg);
     z-index: 100;
 }
 
@@ -143,4 +144,6 @@ body {
     margin-left: 1rem;
     margin-right: 1rem;
 }
+
+div#map {min-height: 360px;}
 
