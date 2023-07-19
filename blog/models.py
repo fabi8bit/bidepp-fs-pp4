@@ -16,6 +16,9 @@ class Hotel(models.Model):
     preferred = models.ManyToManyField(
         User, related_name='preferred_hotel', blank=True)
 
+    def __str__(self):
+        return self.name
+
 class Review(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)

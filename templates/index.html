@@ -12,23 +12,23 @@
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <div class="image-container">
-                                {% if "placeholder" in review.featured_image.url %}
-                                <img class="card-img-top"
-                                    src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
-                                {% else %}
-                                <img class="card-img-top" src=" {{ review.featured_image.url }}">
-                                {% endif %}
-                                <div class="image-flash">
-                                    <p class="author">Author: {{ review.author }}</p>
-                                </div>
-                            </div>
                             <a href="#" class="post-link">
+                                <div class="image-container">
+                                    {% if "placeholder" in review.featured_image.url %}
+                                    <img class="card-img-top"
+                                        src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
+                                    {% else %}
+                                    <img class="card-img-top" src=" {{ review.featured_image.url }}">
+                                    {% endif %}
+                                    <div class="image-flash">
+                                        <p class="author">Author: {{ review.author }}</p>
+                                    </div>
+                                </div>
                                 <h2 class="card-title">{{ review.title }}</h2>
                                 <p class="card-text">{{ review.excerpt }}</p>
                             </a>
                             <hr />
-                            <p class="card-text text-muted h6">{{ review.created_on}} <i class="far fa-heart"></i>
+                            <p class="card-text text-muted h6">{{ review.hotel }}, {{ review.hotel.country }} <i class="far fa-heart"></i>
                                 {{ review.number_of_likes }}</p>
                         </div>
                     </div>
