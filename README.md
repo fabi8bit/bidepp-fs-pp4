@@ -116,6 +116,14 @@ For the Hotel model I installed an external library called django-countries.It p
 
 
 
+
+for comments I used django-crispy-forms. By default, in the template, I didn'like the label of Body and with a little bit of research I found how to tweak it. I also didn't like the use of * (asterisk) to denote a required fields for comments. In the documentation I found out that Asterisks have an asteriskField class set. So I could hide it using display: none  in the CSS file.
+
+
+TESTING
+Clear form after submitting
+
+
 Case sensitive username field
 https://simpleisbetterthancomplex.com/article/2021/07/08/what-you-should-know-about-the-django-user-model.html
 

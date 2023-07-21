@@ -145,13 +145,17 @@ body {
     margin-right: 1rem;
 }
 
-div#map {min-height: 360px;}
+div#map {
+    min-height: 360px;
+    border-radius: 5px;
+}
 
 .form-signin {
     width: 100%;
     max-width: 330px;
     padding: 15px;
-    /* margin: 10rem auto; */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* removes the annoying * from the comment field
@@ -159,6 +163,18 @@ in the review page when a User is logged in*/
 .asteriskField {
     display: none;
 }
+
+/* override standard bootstrap column alignment*/
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+  
+    > .col,
+    > [class*="col-"] {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
 
 
 

@@ -28,9 +28,24 @@
         <div class="col-md-8 card mb-4 mt-3 left top">
             <div class="card-body">
                 <p class="card-text ">{{ review.content | safe }}</p>
-                <div class="row">
+                <div class="row no-gutters">
                     <div class="col-1">
-                        <strong class="text-secondary"><i class="far fa-heart"></i>{{ review.number_of_likes }}</strong>
+                        <strong>
+                            {% if user.is_authenticated %}
+                            <form class="d-inline" action="{% url 'review_like' review.slug %}" method="POST">
+                                {% csrf_token %}
+                                {% if liked %}
+                                <button type="submit" name="blogpost_id" value="{{review.slug}}" class="btn-like"><i class="fas fa-heart"></i></button>
+                                {% else %}
+                                <button type="submit" name="blogpost_id" value="{{review.slug}}" class="btn-like"><i class="far fa-heart"></i></button>
+                                {% endif %}
+                            </form>
+                            {% else %}
+                            <span class="text-secondary"><i class="far fa-heart"></i></span>
+                            {% endif %}
+                            <span class="text-secondary">{{ review.number_of_likes }} </span>
+                        </strong>
+                        
                     </div>
                     <div class="col-1">
                         {% with comments.count as total_comments %}
@@ -71,7 +86,16 @@
         <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
                 {% if user.is_authenticated %}
-
+                {% if commented %}
+                <div class="alert alert-info" role="alert">
+                    Thank you! Your comment is awaiting approval!
+                </div>
+                {% endif %}
+                {% if invalid_form %}
+                <div class="alert alert-info" role="alert">
+                    Squeeze your head! You can come up with something unexpected!
+                </div>
+                {% endif %}
                 <h3>Tell us what you think:</h3>
                 <p>Posting as: {{ user.username }}</p>
                 <form method="post" style="margin-top: 1.3em;">
@@ -79,6 +103,7 @@
                     {% csrf_token %}
                     <button type="submit" class="btn btn-outline-light btn-lg">Submit</button>
                 </form>
+                
                 {% endif %}
             </div>
         </div>
@@ -88,10 +113,11 @@
 {% endblock content %}
 
 {% block scripts %}
-    <!-- block.super will get the content of the block from the parent template -->
-    {{ block.super }}
-    <script>
-        var hotelLat = {{ review.hotel.latitude }};
-        var hotelLng = {{ review.hotel.longitude }};
-     </script>
+<!-- block.super will get the content of the block from the parent template -->
+{{ block.super }}
+<script>
+    var hotelLat = {{ review.hotel.latitude }};
+    var hotelLng = {{ review.hotel.longitude }};
+</script>
+
 {% endblock %}
