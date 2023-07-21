@@ -6,27 +6,47 @@ Bidepp is a full stack blog website. It's built using Django, Python, HTML, CSS 
 
 [Visit Bidepp blog Here](https:)
 
-## The Idea
 
-My brother and I are use to travel. As Italians sometimes we struggle not finding an Hotel room with a bidet, and this is something really common when you travel abroad. From this need the idea of Bidepp was born: "an Hotel directory only for Hotels with bidets"
 
 ---
 
 ## Contents
 
+* [The Idea](#the-idea)
 * [Project Goal](#project-goal)
+
+* [Project Planning](#project-goal)
+  * [Sketches](#sketches)
   * [Feature Planning](#feature-planning)
   * [User Stories](#user-stories)
+  * [Database Scheme](#database-scheme)
+  * [Wireframes](#wireframes)
+
+
     
 
 ---
+
+## The Idea
+
+My brother and I are use to travel. As Italians sometimes we struggle not finding an Hotel room with a bidet, and this is something really common when you travel abroad. From this need the idea of Bidepp was born: "an Hotel directory only for Hotels with bidets"
 
 ## Project Goal
 
 The website is a blog reviewing Hotels around the world that feature a bidet. It hope to become the place to go before booking hotel rooms abroad. Beside the blog section, the website has a directory where all the reviewed Hotels are listed.
 In the future a direct booking system will be implemented.
 
-#### *Feature Planning*
+## Project Planning
+### *Sketches*
+For the planning of this project I took inspiration from the walkthrough project "I think therefore I blog" of Code Institute. I adapted some of the features to my needs and integrate with some codes I learned during the lessons. Check at the end of the document for the credits.
+Before dove into coding I sketched roughly some ideas on paper and wrote down some notes. That helped me to keep track on the project and stay focused on the steps to take.
+
+![ideas sketch](readme_assets/readme_img/ideas_sketch.png)
+
+
+
+---
+### *Feature Planning*
 
 |User Type | Feature |  Delivered |
 | :--- | :--- | :---: | 
@@ -43,7 +63,8 @@ In the future a direct booking system will be implemented.
 | Registered User | Set Hotel as preferred | no |
 
 ---
-#### *User Stories*
+---
+### *User Stories*
 
 After defining the feature for the blog I lined up the user stories as follows:
 
@@ -66,6 +87,31 @@ After defining the feature for the blog I lined up the user stories as follows:
 | 15 | Hotel location | User | On a map I can see the Hotel location | I know where it is |
 | 16 | Location Cluster | User | click a marker on the map | I can be redirected to the review of the specific Hotel |
 | 17 | Create Hotel | Admin | create, read, update, delete Hotels | I can attach them to a Review |
+
+---
+---
+### *Database Scheme*
+For the database model I took completely inspiration from the model used for the walkthrough project "I think therefore I blog" of Code Institute.
+While designing the draft for the Review model I realized I needed a different table for the Hotels in order to separate completely the Hotel from the Post so I can add more functionality to the the App, like grouping and displaying Hotels by country and retrieve after the relative reviews. From the picture below you can see the draft I initially designed with some striked lines which are the one I decided to move to the Hotel model.
+![Database Sketch](readme_assets/readme_img/dbsketch.jpeg)
+
+#### Hotel Model
+For the Hotel model I installed an external library called django-countries.It provides a country field for Django models and the informations can be find [here](https://pypi.org/project/django-countries/).
+
+![Hotel Model db](readme_assets/readme_img/hotel_model.png)
+
+#### Review Model
+![Review Model db](readme_assets/readme_img/review_model.png)
+
+#### Comment Model
+![Comment Model db](readme_assets/readme_img/comment_model.png)
+
+---
+---
+### *Wireframes*
+
+
+
 
 
 
@@ -107,5 +153,3 @@ http://www.prepbootstrap.com/bootstrap-template/real-estate-list-map-dynamic
 django: how to pass template variable to javascript onclick routine
 https://stackoverflow.com/questions/28516101/django-how-to-pass-template-variable-to-javascript-onclick-routine
 
-[photo_sketch_model]
-While designing the draft for the Post model I realized I needed a different table for the Hotels in order to separate completely the Hotel from the Post so I can add more functionality to the the App, like grouping and displaying Hotels by country and retrieve after the relative reviews.

@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['bidepp-cc1716a9edf6.herokuapp.com','8000-fabi8bit-bideppfspp4-5aqbgymdmss.ws-eu101.gitpod.io']
+ALLOWED_HOSTS = ['bidepp-cc1716a9edf6.herokuapp.com','8000-fabi8bit-bideppfspp4-5aqbgymdmss.ws-eu102.gitpod.io']
 
 
 # Application definition
@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'django_countries',
@@ -48,6 +52,12 @@ INSTALLED_APPS = [
     'django_summernote',
     'blog',
 ]
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
