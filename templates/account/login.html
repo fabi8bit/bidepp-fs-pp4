@@ -8,23 +8,25 @@
 {% block content %}
 
 
-<div class="text-center form-signin">
+<div class="text-center form-signin mt-4">
 
-<h3>{% trans "Sign In" %}</h3>
-
-
-<p>{% blocktrans %}If you have not created an account yet, then please
-<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+  <h3>{% trans "Sign In" %}</h3>
 
 
-<form class="login" method="POST" action="{% url 'account_login' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button class="primaryAction btn btn-lg btn-warning btn-block" type="submit">{% trans "Sign In" %}</button>
-</form>
+  <p>{% blocktrans %}Welcome back to Bidepp!<br>Sign In to leave comments or like posts.<br>If you have not created an
+    account
+    yet, then please sign up first.
+    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+
+
+  <form class="login" method="POST" action="{% url 'account_login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    <button class="primaryAction btn btn-lg btn-outline-light btn-block" type="submit">{% trans "Sign In" %}</button>
+  </form>
 </div>
 
 {% endblock %}

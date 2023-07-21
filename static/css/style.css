@@ -151,7 +151,13 @@ div#map {min-height: 360px;}
     width: 100%;
     max-width: 330px;
     padding: 15px;
-    margin: 10rem auto;
+    /* margin: 10rem auto; */
+}
+
+/* removes the annoying * from the comment field
+in the review page when a User is logged in*/
+.asteriskField {
+    display: none;
 }
 
 
