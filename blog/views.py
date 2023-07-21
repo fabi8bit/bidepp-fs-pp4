@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 from .models import Review
 from .forms import CommentForm
 
@@ -53,6 +54,7 @@ class ReviewDetail(View):
             comment = comment_form.save(commit=False)
             comment.review = review
             comment.save()
+            messages.add_message(request, messages.INFO, 'Comment submitted')
         else:
             invalid_form = True
             comment_form = CommentForm()
