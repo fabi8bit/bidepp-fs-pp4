@@ -6,11 +6,13 @@ from .models import Review
 from .forms import CommentForm
 
 
+def index_home(request):
+    return render(request, 'index.html')  
 
 class ReviewList(generic.ListView):
     model = Review
     queryset = Review.objects.filter(status=1).order_by('-created_on')
-    template_name = 'index.html'
+    template_name = 'blog.html'
     paginate_by = 6
 
 

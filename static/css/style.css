@@ -150,10 +150,21 @@ div#map {
     border-radius: 5px;
 }
 
+#home_claim {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .form-signin {
     width: 100%;
     max-width: 330px;
     padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input, label {
+    display:block;
     margin-left: auto;
     margin-right: auto;
 }
@@ -175,6 +186,11 @@ in the review page when a User is logged in*/
       padding-left: 0;
     }
   }
+
+
+
+
+  
 
 
 

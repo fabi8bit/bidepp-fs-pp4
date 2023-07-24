@@ -122,6 +122,7 @@ for comments I used django-crispy-forms. By default, in the template, I didn'lik
 
 TESTING
 Clear form after submitting
+httpResponseRedirect didnt work. So I tried with JS
 
 
 Case sensitive username field
@@ -129,6 +130,9 @@ https://simpleisbetterthancomplex.com/article/2021/07/08/what-you-should-know-ab
 
 Django countries
 https://pypi.org/project/django-countries/
+
+Widget Tweaks
+https://www.geeksforgeeks.org/how-to-customize-django-forms-using-django-widget-tweaks/
 
 external resources:
 location map https://django-geoposition.readthedocs.io/en/latest/

@@ -1,59 +1,24 @@
-{% extends "base.html" %}
-
+{% extends 'base.html' %}
 {% block content %}
 
-<div class="container-fluid">
-    <div class="row">
-
-        <!-- Blog Entries Column -->
-        <div class="col-12 mt-3 left">
-            <div class="row">
-                {% for review in review_list %}
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <a href="{% url 'review_detail' review.slug %}" class="post-link">
-                                <div class="image-container">
-                                    {% if "placeholder" in review.featured_image.url %}
-                                    <img class="card-img-top"
-                                        src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
-                                    {% else %}
-                                    <img class="card-img-top" src=" {{ review.featured_image.url }}">
-                                    {% endif %}
-                                    <div class="image-flash">
-                                        <p class="author">Author: {{ review.author }}</p>
-                                    </div>
-                                </div>
-                                <h2 class="card-title">{{ review.title }}</h2>
-                                <p class="card-text">{{ review.excerpt }}</p>
-                            </a>
-                            <hr />
-                            <p class="card-text text-muted h6">{{ review.hotel }}, {{ review.hotel.country }} <i class="far fa-heart"></i>
-                                {{ review.number_of_likes }}</p>
-                        </div>
-                    </div>
-                </div>
-                {% if forloop.counter|divisibleby:3 %}
-            </div>
-            <div class="row">
-                {% endif %}
-                {% endfor %}
-
-            </div>
-        </div>
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+  <div id="home_claim" class="text-center h-100 p-3 mt-4 col-md-6">
+    <img src="../static/images/bidepp_logo.webp" alt="bidepp logo square">
+    <h1 class="cover-heading">Bidepp</h1>
+    <div class="round-container">
+      <p class="lead">We are Italians and when we talk toilets, well, we are spoiled! Traveling around the world for an
+        Italian can be difficult just because outside our country it's barely impossible to find a bidet. If you don't
+        know
+        what it is you'll probably landed in the wrong place. Viceversa have a look at our blog featuring the best
+        places
+        featuring this device to leasure your travel!</p>
     </div>
-    {% if is_paginated %}
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
-            {% endif %}
-            {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+    <p class="lead">
+      <a href="{% url 'blog' %}" class="btn btn-lg btn-outline-light btn-block">Blog</a>
+    </p>
 
-            {% endif %}
-        </ul>
-    </nav>
-    {% endif %}
+  </div>
 </div>
-{%endblock%}
+
+
+{% endblock %}

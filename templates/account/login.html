@@ -2,8 +2,13 @@
 
 {% load i18n %}
 {% load account socialaccount %}
+{% load widget_tweaks %}
+
+
+
 
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
+
 
 {% block content %}
 
@@ -11,11 +16,12 @@
 <div class="text-center form-signin mt-4">
 
   <h3>{% trans "Sign In" %}</h3>
+ 
+
 
 
   <p>{% blocktrans %}Welcome back to Bidepp!<br>Sign In to leave comments or like posts.<br>If you have not created an
-    account
-    yet, then please sign up first.
+    account yet, then please sign up first.
     <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
 
 

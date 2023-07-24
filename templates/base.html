@@ -1,10 +1,11 @@
 {% load static %}
 
+
 <!DOCTYPE html>
 <html class="h-100">
 
 <head>
-    <title>CodeStar Blog</title>
+    <title>Bidepp</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
@@ -27,7 +28,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand">Bidepp</span></span></span></a>
+            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/bidepp_logo_full.webp' %}" alt="Bidepp logo" aria-label="Home" width="162px" height="50px"></span></span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -35,7 +36,7 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{% url 'home' %}">Blog</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'blog' %}">Blog</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="#">Hotels</a>
