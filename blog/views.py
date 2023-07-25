@@ -3,7 +3,8 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from .models import Review, Hotel
-from .forms import CommentForm
+from .forms import CommentForm, CreateReviewForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # def index_home(request):
@@ -99,3 +100,10 @@ class HotelList(generic.ListView):
     queryset = Hotel.objects.order_by('-created_on')
     template_name = 'map.html'
     paginate_by = 6
+
+
+def review_form(request):
+    form = CreateReviewForm()
+    return render(request, "review_form.html", {'form': form})
+
+

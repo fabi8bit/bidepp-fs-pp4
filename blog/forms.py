@@ -1,4 +1,4 @@
-from .models import Comment
+from .models import Comment, Review
 from django import forms
 
 
@@ -9,3 +9,9 @@ class CommentForm(forms.ModelForm):
         labels = {
             'body': 'Comment:',
         }
+
+
+class CreateReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = '__all__'
