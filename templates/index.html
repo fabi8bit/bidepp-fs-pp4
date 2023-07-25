@@ -1,24 +1,72 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+
 {% block content %}
 
-<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-  <div id="home_claim" class="text-center h-100 p-3 mt-4 col-md-6">
-    <img src="../static/images/bidepp_logo.webp" alt="bidepp logo square">
-    <h1 class="cover-heading">Bidepp</h1>
-    <div class="round-container">
-      <p class="lead">We are Italians and when we talk toilets, well, we are spoiled! Traveling around the world for an
-        Italian can be difficult just because outside our country it's barely impossible to find a bidet. If you don't
-        know
-        what it is you'll probably landed in the wrong place. Viceversa have a look at our blog featuring the best
-        places
-        featuring this device to leasure your travel!</p>
-    </div>
-    <p class="lead">
-      <a href="{% url 'blog' %}" class="btn btn-lg btn-outline-light btn-block">Blog</a>
-    </p>
+<div class="d-flex p-3 mx-auto flex-column container-fluid mb-4">
+    <div id="home_claim" class="text-center p-3 mt-4 col-md-6">
+        <img src="../static/images/bidepp_logo.webp" alt="bidepp logo square">
+        <h1 class="cover-heading">Bidepp</h1>
+        <div class="round-container">
+            <p class="lead">We are Italians and when we talk toilets, well, we are spoiled! Traveling around the world
+                for an Italian can be difficult just because outside our country it's barely impossible to find a bidet.
+                If you don't know what it is you probably landed in the wrong place. Viceversa have a look at our blog
+                featuring the best places featuring this device to leasure your travel!</p>
+        </div>
+        <p class="lead">
+            <a href="{% url 'blog' %}" class="btn btn-lg btn-outline-light btn-block">Blog</a>
+        </p>
 
-  </div>
+    </div>
 </div>
 
 
-{% endblock %}
+<div class="row mt-4">
+    <!-- Blog Entries Column -->
+    <div class="col-12 mt-3 left">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card-body">
+                    <h4>Last Hotels added</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for hotel in hotel_list %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <hr />
+                        <a href="#" class="post-link">
+                            <p class="card-text">Country: {{ hotel.country }}</p>
+                            <h2 class="card-title">{{ hotel.name }}</h2>
+                            <p class="card-text">{{ hotel.address }}</p>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+            {% if forloop.counter|divisibleby:3 %}
+        </div>
+        <div class="row">
+            {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+{% if is_paginated %}
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li><a href="?page={{ page_obj.previous_page_number }}"
+                class="page-link btn btn-lg btn-outline-light btn-block">&laquo;</a></li>
+        {% endif %}
+        {% if page_obj.has_next %}
+        <li><a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-light btn-block">&raquo;</a></li>
+
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+<!-- </div> -->
+{%endblock%}

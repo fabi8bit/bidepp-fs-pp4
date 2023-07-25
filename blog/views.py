@@ -2,12 +2,12 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.contrib import messages
-from .models import Review
+from .models import Review, Hotel
 from .forms import CommentForm
 
 
-def index_home(request):
-    return render(request, 'index.html')  
+# def index_home(request):
+#     return render(request, 'index.html')  
 
 class ReviewList(generic.ListView):
     model = Review
@@ -85,3 +85,10 @@ class ReviewLike(View):
             review.likes.add(request.user)
         
         return HttpResponseRedirect(reverse('review_detail', args=[slug]))
+
+
+class IndexHome(generic.ListView):
+    model = Hotel
+    queryset = Hotel.objects.all()
+    template_name = 'index.html'
+    paginate_by = 3

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+  <div id="home_claim" class="text-center h-100 p-3 mt-4 col-md-6">
+    <img src="../static/images/bidepp_logo.webp" alt="bidepp logo square">
+    <h1 class="cover-heading">Bidepp</h1>
+    <div class="round-container">
+      <p class="lead">We are Italians and when we talk toilets, well, we are spoiled! Traveling around the world for an
+        Italian can be difficult just because outside our country it's barely impossible to find a bidet. If you don't
+        know
+        what it is you'll probably landed in the wrong place. Viceversa have a look at our blog featuring the best
+        places
+        featuring this device to leasure your travel!</p>
+    </div>
+    <p class="lead">
+      <a href="{% url 'blog' %}" class="btn btn-lg btn-outline-light btn-block">Blog</a>
+    </p>
+
+  </div>
+</div>
+
+
+{% endblock %}
