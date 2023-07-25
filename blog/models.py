@@ -15,6 +15,8 @@ class Hotel(models.Model):
     longitude = models.FloatField()
     preferred = models.ManyToManyField(
         User, related_name='preferred_hotel', blank=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    hotel_image = CloudinaryField('image', default='placeholder')
 
     def __str__(self):
         return self.name
