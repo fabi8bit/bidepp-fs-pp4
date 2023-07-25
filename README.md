@@ -2,7 +2,7 @@
 
 ![Bidepp Banner](documentation/readme/banner.png)
 
-Bidepp is a full stack blog website. It's built using Django, Python, HTML, CSS and JavaScript. This project was created as my fourth milestone project for my Diploma in Web Application Development at Code Institute.
+Bidepp is a full stack blog website. It's built using Django, Python, HTML, CSS and JavaScript. This project was created as my fourth portfolio project for my Diploma in Web Application Development at Code Institute.
 
 [Visit Bidepp blog Here](https:)
 
@@ -92,7 +92,7 @@ After defining the feature for the blog I lined up the user stories as follows:
 ---
 ### *Database Scheme*
 For the database model I took completely inspiration from the model used for the walkthrough project "I think therefore I blog" of Code Institute.
-While designing the draft for the Review model I realized I needed a different table for the Hotels in order to separate completely the Hotel from the Post so I can add more functionality to the the App, like grouping and displaying Hotels by country and retrieve after the relative reviews. From the picture below you can see the draft I initially designed with some striked lines which are the one I decided to move to the Hotel model.
+While designing the draft for the Review model I realized I needed a different table for the Hotels in order to separate completely the Hotel from the Post so I can add more functionality to the the App, like grouping and displaying Hotels by country and retrieve after the relative reviews. From the picture below you can see the draft I initially designed with some striked lines which are the one I decided to move to the Hotel model. During the develope I edited further the model for the Hotels. I added Hotel_image and created_on fields. Thanks to the agile methodology, it was very easy to adapt what was planned at the beginning.
 ![Database Sketch](readme_assets/readme_img/dbsketch.jpeg)
 
 #### Hotel Model
@@ -165,3 +165,9 @@ http://www.prepbootstrap.com/bootstrap-template/real-estate-list-map-dynamic
 django: how to pass template variable to javascript onclick routine
 https://stackoverflow.com/questions/28516101/django-how-to-pass-template-variable-to-javascript-onclick-routine
 
+form creation
+https://medium.com/jungletronics/a-django-blog-in-vs-code-3b6fc8eb19aa
+https://www.javatpoint.com/django-crud-application
+https://www.youtube.com/watch?v=N6jzspc2kds&t=3387s 
+https://forum.djangoproject.com/t/how-to-restrict-django-staff-user-to-edit-or-delete-others-staff-user-post-from-admin-panel/7887
+https://www.youtube.com/watch?v=TAH01Iy5AuE

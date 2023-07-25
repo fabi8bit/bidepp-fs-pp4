@@ -89,6 +89,13 @@ class ReviewLike(View):
 
 class IndexHome(generic.ListView):
     model = Hotel
-    queryset = Hotel.objects.all()
+    queryset = Hotel.objects.order_by('-created_on')
     template_name = 'index.html'
     paginate_by = 3
+
+
+class HotelList(generic.ListView):
+    model = Hotel
+    queryset = Hotel.objects.order_by('-created_on')
+    template_name = 'map.html'
+    paginate_by = 6

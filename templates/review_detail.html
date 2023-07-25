@@ -117,8 +117,12 @@
 <!-- block.super will get the content of the block from the parent template -->
 {{ block.super }}
 <script>
+    var locations_list = [
+      { lat: {{ review.hotel.latitude }}, lng: {{ review.hotel.longitude }} },];
+
     var hotelLat = {{ review.hotel.latitude }};
     var hotelLng = {{ review.hotel.longitude }};
+    var zoom_factor = 15;
 </script>
 
 {% endblock %}

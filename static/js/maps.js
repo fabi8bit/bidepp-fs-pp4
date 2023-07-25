@@ -1,6 +1,6 @@
 function initMap() {
     var map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 15,
+        zoom: zoom_factor,
         center: {
             lat: hotelLat,
             lng: hotelLng
@@ -16,10 +16,12 @@ function initMap() {
     //     { lat: 40.754932, lng: -73.984016 }
     // ];
     
-    var locations = [
-        { lat: hotelLat, lng: hotelLng },
+    // var locations = [
+    //     { lat: hotelLat, lng: hotelLng },
         
-    ];
+    // ];
+
+    var locations = locations_list
 
     var markers = locations.map(function(location, i) {
         return new google.maps.Marker({

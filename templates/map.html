@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="d-flex p-3 mx-auto flex-column container-fluid mb-4">
+  <div class="home_claim h-100 p-3 mt-4 col-md-6">
+    <div id="map"></div>
+    
+
+    <div>
+      {% for hotel in hotel_list %}
+      <p>{{ hotel.name }}</p>
+      <p>{{ hotel.latitude}}</p>
+      <p>{{ hotel.longitude }}</p>
+      <hr/>
+      {% endfor %}
+    </div>
+  
+
+  </div>
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+<!-- block.super will get the content of the block from the parent template -->
+{{ block.super }}
+<script>
+    var locations_list = [
+      {% for hotel in hotel_list %} 
+      { lat: {{ hotel.latitude}}, lng: {{ hotel.longitude }} },
+      {% endfor %}];
+    
+    var hotelLat = 45.95115;
+    var hotelLng = 10.502986;
+    var zoom_factor = 1;
+</script>
+
+{% endblock %}
+
