@@ -59,7 +59,7 @@ body {
 }
 
 .masthead-text {
-    background-color: #445261;
+    background-color: #f3f3f3;
     color: white;
     position: relative;
 }
@@ -156,6 +156,22 @@ div#map {
 .form-signin {
     width: 100%;
     max-width: 330px;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-review {
+    width: 100%;
+    max-width: 500px;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.list-review {
+    width: 100%;
+    max-width: 80%;
     padding: 15px;
     margin-left: auto;
     margin-right: auto;

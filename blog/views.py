@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.contrib import messages
@@ -13,7 +13,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class ReviewList(generic.ListView):
     model = Review
     queryset = Review.objects.filter(status=1).order_by('-created_on')
-    template_name = 'blog.html'
+    # template_name = 'blog.html'
     paginate_by = 6
 
 
@@ -103,7 +103,22 @@ class HotelList(generic.ListView):
 
 
 def review_form(request):
-    form = CreateReviewForm()
-    return render(request, "review_form.html", {'form': form})
+    if request.method == "GET":
+        form = CreateReviewForm()
+        return render(request, "review_form.html", {'form': form})
+    else:
+        # solution from here:
+        # https://stackoverflow.com/questions/59663492/django-form-successful-but-image-not-uploaded
+        form = CreateReviewForm(request.POST, request.FILES or None)
+        if form.is_valid():
+            check = form.save(commit=False)
+            check.user = request.user
+            check.save()
+        return redirect('/blog/')
+
+
+# def review_list(request):
+#     context = {'review_list': }
+#     return render(request, "review_list.html")
 
 
