@@ -102,9 +102,13 @@ class HotelList(generic.ListView):
     paginate_by = 6
 
 
-def review_form(request):
+def review_form(request, slug=""):
     if request.method == "GET":
-        form = CreateReviewForm()
+        if slug == "":
+            form = CreateReviewForm()
+        else:
+            review = Review.objects.get(slug=slug)
+            form = CreateReviewForm(instance=review)
         return render(request, "review_form.html", {'form': form})
     else:
         # solution from here:

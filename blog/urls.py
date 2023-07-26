@@ -7,6 +7,7 @@ from .views import review_form
 urlpatterns = [
     path('', views.IndexHome.as_view(), name='home'),
     path('form/', views.review_form, name='review_form'),
+    path('form/<slug:slug>/', views.review_form, name='review_update'),
     path('list/', views.ReviewList.as_view(
         template_name='review_list.html'), name='review_list'),
     path('blog/', views.ReviewList.as_view(
