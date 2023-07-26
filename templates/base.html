@@ -43,7 +43,7 @@
                     </li>
                     {% if user.is_superuser %}
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Manage</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'review_list' %}">Manage</a>
                     </li>
                     {% endif %}
                     {% if user.is_authenticated %}
