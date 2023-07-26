@@ -4,13 +4,13 @@
 
 {% if user.is_superuser %}
 <div class="form-review mt-4">
-    <h3>Review details</h3>
+    <h3>Hotel details</h3>
     <p>You are logged in as <strong>{{ user }}</strong></p>
     <form class="signup" id="signup_form" method="post" autocomplete="off" enctype='multipart/form-data' action="">
       {{ form | crispy }}
       {% csrf_token %}
       <button class="btn btn-success " type="submit">Submit</button>
-      <button class="btn btn-danger" type="button" onclick="location.href={% url 'review_list' %}">Back to Reviews list</button>
+      <button class="btn btn-danger" type="button" onclick="location.href={% url 'review_list' %}">Back to Hotels list</button>
     </form>
 </div>
 {% else %}

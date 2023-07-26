@@ -124,6 +124,12 @@ TESTING
 Clear form after submitting
 httpResponseRedirect didnt work. So I tried with JS
 
+The Review and Hotel managing panel, at this stage, is able to display only the Published review and the Hotels associated with it (all the reviews and hotels are accessible from the admin page). In order to retrieve the data for all the reviews, I decided to use the same class as for the blog. A possible solution is to duplicate the class and delete the filter in order to display both the draft and published reviews.
+Hotels are only visible when associated to a review because it's a blog reviewing Hotels and not an Hotels directory.
+
+
+
+
 
 Case sensitive username field
 https://simpleisbetterthancomplex.com/article/2021/07/08/what-you-should-know-about-the-django-user-model.html

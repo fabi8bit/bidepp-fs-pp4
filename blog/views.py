@@ -3,7 +3,7 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from .models import Review, Hotel
-from .forms import CommentForm, CreateReviewForm
+from .forms import CommentForm, CreateReviewForm, CreateHotelForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
@@ -13,8 +13,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class ReviewList(generic.ListView):
     model = Review
     queryset = Review.objects.filter(status=1).order_by('-created_on')
-    # template_name = 'blog.html'
-    # paginate_by = 6
+    # template_name = 'blog.html'    *** moved to urls path as argument,
+    # paginate_by = 6    *** moved to urls path as argument
+    # so we can use the same class to display the blog and the list
+    # for editing operations (update, delete).
 
 
 class ReviewDetail(View):
@@ -112,7 +114,6 @@ def review_form(request, slug=""):
         return render(request, "review_form.html", {'form': form})
     else:
         if slug == "":
-
             # solution from here:
             # https://stackoverflow.com/questions/59663492/django-form-successful-but-image-not-uploaded
             form = CreateReviewForm(request.POST, request.FILES or None)
@@ -124,15 +125,42 @@ def review_form(request, slug=""):
             check = form.save(commit=False)
             check.user = request.user
             check.save()
-        if slug == "":
-            return redirect('/blog/')
-        else:
-            return redirect('/list/')
-        
-            
+        return redirect('/list/')
+
+
 def review_delete(request, slug):
     review = get_object_or_404(Review, slug=slug)
     review.delete()
+    return redirect('/list/')
+
+
+def hotel_form(request, id=0):
+    if request.method == "GET":
+        if id == 0:
+            form = CreateHotelForm()
+        else:
+            hotel = Hotel.objects.get(pk=id)
+            form = CreateHotelForm(instance=hotel)
+        return render(request, "hotel_form.html", {'form': form})
+    else:
+        if id == 0:
+            # solution from here:
+            # https://stackoverflow.com/questions/59663492/django-form-successful-but-image-not-uploaded
+            form = CreateHotelForm(request.POST, request.FILES or None)
+        else:
+            hotel = Hotel.objects.get(pk=id)
+            form = CreateHotelForm(
+                request.POST, request.FILES or None, instance=hotel)
+        if form.is_valid():
+            check = form.save(commit=False)
+            check.user = request.user
+            check.save()
+        return redirect('/list/')
+
+
+def hotel_delete(request, id):
+    hotel = get_object_or_404(Hotel, pk=id)
+    hotel.delete()
     return redirect('/list/')
 
 # def review_list(request):
