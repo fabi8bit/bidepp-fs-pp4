@@ -12,7 +12,7 @@ urlpatterns = [
     path('list/', views.ReviewList.as_view(
         template_name='review_list.html'), name='review_list'),
     path('blog/', views.ReviewList.as_view(
-        template_name='blog.html'), name='blog'),
+        template_name='blog.html', paginate_by=6), name='blog'),
     path('map/', views.HotelList.as_view(), name='map'),
     path('<slug:slug>/', views.ReviewDetail.as_view(), name='review_detail'),
     path('like/<slug:slug>', views.ReviewLike.as_view(), name='review_like'),

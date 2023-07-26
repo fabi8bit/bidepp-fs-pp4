@@ -5,14 +5,13 @@
 {% if user.is_superuser %}
 <div class="list-review">
 <h3>Reviews</h3>
-
 <div class="table-responsive">
 <table class="table table-striped table-dark table-sm">
   <thead>
     <tr>
-      <td>Title</td>
-      <td>Author</td>
-      <td>Created</td>
+      <td>TITLE</td>
+      <td>AUTHOR</td>
+      <td>CREATED ON</td>
       <td>
         <a href="{% url 'review_form' %}" class="btn btn-outline-success"><i class="fas fa-plus"></i> New Review</a>
       </td>
