@@ -28,6 +28,9 @@
         <a href="{% url 'review_update' review.slug %}" class="btn text-secondary px-0">
           <i class="far fa-edit fa-lg"></i>
         </a>
+        <a href="{% url 'review_delete' review.slug %}" class="btn text-secondary px-0">
+          <i class="fa fa-trash"></i>
+        </a>
       </td>
     </tr>
     {% endfor %}

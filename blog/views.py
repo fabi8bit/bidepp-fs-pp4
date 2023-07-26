@@ -130,7 +130,10 @@ def review_form(request, slug=""):
             return redirect('/list/')
         
             
-
+def review_delete(request, slug):
+    review = get_object_or_404(Review, slug=slug)
+    review.delete()
+    return redirect('/list/')
 
 # def review_list(request):
 #     context = {'review_list': }
