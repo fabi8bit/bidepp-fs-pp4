@@ -7,7 +7,7 @@
     <h3>Create a Review"</h3>
     <p>You are logged in as <strong>{{ user }}</strong></p>
   
-    <form class="signup" id="signup_form" method="post" autocomplete="off" enctype='multipart/form-data' action="{% url 'review_form' %}">
+    <form class="signup" id="signup_form" method="post" autocomplete="off" enctype='multipart/form-data' action="">
       {{ form | crispy }}
       {% csrf_token %}
       <button class="primaryAction btn btn-lg btn-outline-light btn-block" type="submit">Submit</button>

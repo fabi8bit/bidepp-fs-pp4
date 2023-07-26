@@ -111,14 +111,25 @@ def review_form(request, slug=""):
             form = CreateReviewForm(instance=review)
         return render(request, "review_form.html", {'form': form})
     else:
-        # solution from here:
-        # https://stackoverflow.com/questions/59663492/django-form-successful-but-image-not-uploaded
-        form = CreateReviewForm(request.POST, request.FILES or None)
+        if slug == "":
+
+            # solution from here:
+            # https://stackoverflow.com/questions/59663492/django-form-successful-but-image-not-uploaded
+            form = CreateReviewForm(request.POST, request.FILES or None)
+        else:
+            review = Review.objects.get(slug=slug)
+            form = CreateReviewForm(
+                request.POST, request.FILES or None, instance=review)
         if form.is_valid():
             check = form.save(commit=False)
             check.user = request.user
             check.save()
-        return redirect('/blog/')
+        if slug == "":
+            return redirect('/blog/')
+        else:
+            return redirect('/list/')
+        
+            
 
 
 # def review_list(request):
