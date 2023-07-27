@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<div class="masthead">
+    <div class="container">
+        <div class="row g-0">
+            <div class="col-md-6 masthead-text">
+                <h1 class="post-title">
+                    {{ hotel.name }}
+                </h1>
+            </div>
+            <div class="d-none d-md-block col-md-6 masthead-image">
+                {% if "placeholder" in review.featured_image.url %}
+                <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
+                {% else %}
+                <img src="{{ hotel.hotel_image.url }}" width="100%">
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 card mb-4 mt-3">
+            <div id="map"></div>
+        </div>
+        <div class="col-md-4 mt-3">
+            <hr/>
+            <h3>Details</h3>
+            <hr/>
+            <h5>Address:</h5>
+            <p class="post-subtitle"> {{ hotel.address }}</p>
+            <p class="post-subtitle"> {{ hotel.city }} | {{ hotel.country }}</p>
+            <h5>Coordinates:</h5>
+            <p class="post-subtitle"> {{ hotel.longitude }} | {{ hotel.latitude }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 card mb-4 mt-3">
+            <h3>{{ hotel.name }} appears in the following reviews: {{ blog_reviews }}</h3>
+            {% for review in blog_reviews %}
+            <p>test</p>
+            {% endfor %}
+        </div>
+
+    </div>
+  </div>
+
+
+
+
+
+{% endblock content %}
+
+{% block scripts %}
+<!-- block.super will get the content of the block from the parent template -->
+{{ block.super }}
+<script>
+    var hotelLat = {{ hotel.latitude }};
+    var hotelLng = {{ hotel.longitude }};
+    var locations_list = [
+      { lat: hotelLat, lng: hotelLng },];
+    var zoom_factor = 15;
+</script>
+
+{% endblock %}

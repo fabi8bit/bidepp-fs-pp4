@@ -23,6 +23,8 @@ urlpatterns = [
     path('blog/', views.ReviewList.as_view(
         template_name='blog.html', paginate_by=6), name='blog'),
     path('map/', views.HotelList.as_view(), name='map'),
+    path('<int:id>/', views.HotelDetail.as_view(), name='hotel_detail'),
     path('<slug:slug>/', views.ReviewDetail.as_view(), name='review_detail'),
+    path('<int:id>/', views.HotelDetail.as_view(), name='hotel_detail'),
     path('like/<slug:slug>', views.ReviewLike.as_view(), name='review_like'),
 ]

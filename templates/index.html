@@ -35,7 +35,7 @@
                 <div class="card mb-4">
                     <div class="card-body">
                         <hr />
-                        <a href="#" class="post-link">
+                        <a href="{% url 'hotel_detail' hotel.id %}" class="post-link">
                             <div class="image-container">
                                 {% if "placeholder" in hotel.hotel_image.url %}
                                 <img class="card-img-top"
@@ -82,5 +82,5 @@
     </ul>
 </nav>
 {% endif %}
-<!-- </div> -->
+
 {%endblock%}

@@ -90,6 +90,42 @@ class ReviewLike(View):
         return HttpResponseRedirect(reverse('review_detail', args=[slug]))
 
 
+# class HotelDetail(View):
+
+#     def get(self, request, id, *args, **kwargs):
+#         queryset = Hotel.objects.all()
+#         hotel = get_object_or_404(queryset, pk=id)
+#         preferred = False
+#         if hotel.preferred.filter(userid=self.request.user.id).exists():
+#             liked = True
+
+#         return render(
+#             request,
+#             "hotel_detail.html",
+#             {
+#                 "hotel": hotel,
+#                 "preferred": preferred,
+#             },
+#         )
+
+class HotelDetail(View):
+
+    def get(self, request, id, *args, **kwargs):
+        queryset = Hotel.objects.all()
+        hotel = get_object_or_404(queryset, pk=id)
+
+        return render(
+            request,
+            "hotel_detail.html",
+            {
+                "hotel": hotel,
+            },
+        )
+
+
+        
+
+
 class IndexHome(generic.ListView):
     model = Hotel
     queryset = Hotel.objects.order_by('-created_on')

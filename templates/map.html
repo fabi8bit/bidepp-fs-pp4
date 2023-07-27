@@ -30,11 +30,25 @@
       {% for hotel in hotel_list %} 
       { lat: {{ hotel.latitude}}, lng: {{ hotel.longitude }} },
       {% endfor %}];
+
+    // var hotel_info = [
+    // {% for hotel in hotel_list %} 
+    // {
+    //   name: {{ hotel.name }},
+    //   address: {{ hotel.address }},
+    //   city: {{ hotel.city }},
+    //   country: {{ hotel.country }}
+    // }
+    // {% endfor %}];
+
+      
     
     var hotelLat = 45.95115;
     var hotelLng = 10.502986;
     var zoom_factor = 1;
 </script>
+<script src="../static/js/maps.js"></script>
+<script src="../static/js/script.js"></script>
 
 {% endblock %}
 

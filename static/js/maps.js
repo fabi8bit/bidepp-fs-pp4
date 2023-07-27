@@ -8,7 +8,11 @@ function initMap() {
         mapId: '219bf99537910ddc'
     });
 
+    let infowindow = new google.maps.InfoWindow();
+
     var labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    // var labels = hotel_list;
+    
 
     // var locations = [
     //     { lat: 40.785091, lng: -73.968285 },
@@ -26,12 +30,19 @@ function initMap() {
     var markers = locations.map(function(location, i) {
         return new google.maps.Marker({
             position: location,
-            label: labels[i % labels.length]
+            label: labels[i % labels.length],
+            
         });
     });
 
     
 
     var markerCluster = new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+
+    marker.addEventListener('mouseover', function() {
+        infowindow.open(map, marker);
+        infowindow.setContent("<div>dio can</div>")
+        console.log("Hello world!");
+    })
     
 }

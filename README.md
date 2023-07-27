@@ -126,6 +126,11 @@ httpResponseRedirect didnt work. So I tried with JS
 
 The Review and Hotel managing panel, at this stage, is able to display only the Published review and the Hotels associated with it (all the reviews and hotels are accessible from the admin page). In order to retrieve the data for all the reviews, I decided to use the same class as for the blog. A possible solution is to duplicate the class and delete the filter in order to display both the draft and published reviews.
 Hotels are only visible when associated to a review because it's a blog reviewing Hotels and not an Hotels directory.
+The slug field in the new Review form is not automatic and has to be generated manually. It's fully automatic in the admin page. A possible solution is to implement a javascript I found at [this link](https://gist.github.com/codeguy/6684588) or [this link](https://stackoverflow.com/questions/12098319/how-add-a-pre-populated-field-to-a-form-submission-in-django-like-in-admin)
+
+- Deleting Reviews not working until I moved the order of the urls path
+- Deleting Hotel not working until I moved the order of the urls path
+- After the second time I moved the path order in the urls I researched and found this [post](https://stackoverflow.com/questions/36429144/page-not-found-404-no-post-matches-the-given-query) that partially explain what's happening
 
 
 
