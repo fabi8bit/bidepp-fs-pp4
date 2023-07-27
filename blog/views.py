@@ -113,12 +113,15 @@ class HotelDetail(View):
     def get(self, request, id, *args, **kwargs):
         queryset = Hotel.objects.all()
         hotel = get_object_or_404(queryset, pk=id)
+        reviews = hotel.blog_reviews.filter(
+            status=1).order_by('-created_on')
 
         return render(
             request,
             "hotel_detail.html",
             {
                 "hotel": hotel,
+                "reviews": reviews
             },
         )
 
@@ -199,8 +202,8 @@ def hotel_delete(request, id):
     hotel.delete()
     return redirect('/list/')
 
-# def review_list(request):
-#     context = {'review_list': }
-#     return render(request, "review_list.html")
+
+
+    
 
 
