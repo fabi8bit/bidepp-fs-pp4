@@ -10,7 +10,9 @@
                 <h1 class="post-title">
                     {{ review.title }}
                 </h1>
+                <a href="{% url 'hotel_detail' review.hotel.id %}" class="post-link">
                 <p class="post-subtitle"> {{ review.hotel }} | {{ review.hotel.country }}</p>
+                </a>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 {% if "placeholder" in review.featured_image.url %}
