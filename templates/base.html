@@ -62,6 +62,11 @@
                     </li>
                     {% endif %}
                 </ul>
+                <div class="user-logged">
+                    <div class="nav-item align-baseline">
+                        <div href="{% url 'account_logout' %}">Logged In as <strong>{{ user }}</strong></div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>

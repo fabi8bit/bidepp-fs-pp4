@@ -12,7 +12,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class ReviewList(generic.ListView):
     model = Review
-    # queryset = Review.objects.filter(status=1).order_by('-created_on')
+    queryset = Review.objects.filter(status=1).order_by('-created_on')
     # template_name = 'blog.html'    *** moved to urls path as argument,
     # paginate_by = 6    *** moved to urls path as argument
     # so we can use the same class to display the blog and the list
@@ -36,9 +36,10 @@ class ManageList(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['review'] = Review.objects.filter(status=1).order_by('-created_on')
-        context['hotel'] = Hotel.objects.order_by('-created_on')
         context['navbar'] = 'manage'
         return context
+
+
 
 
 

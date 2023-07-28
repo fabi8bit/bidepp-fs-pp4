@@ -136,6 +136,8 @@ The slug field in the new Review form is not automatic and has to be generated m
 
 
 
+
+
 Case sensitive username field
 https://simpleisbetterthancomplex.com/article/2021/07/08/what-you-should-know-about-the-django-user-model.html
 
