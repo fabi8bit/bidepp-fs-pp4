@@ -132,15 +132,15 @@ class HotelDetail(View):
 class IndexHome(generic.ListView):
     model = Hotel
     queryset = Hotel.objects.order_by('-created_on')
-    template_name = 'index.html'
-    paginate_by = 3
+    # template_name = 'index.html'
+    # paginate_by = 3
 
 
-class HotelList(generic.ListView):
-    model = Hotel
-    queryset = Hotel.objects.order_by('-created_on')
-    template_name = 'map.html'
-    paginate_by = 6
+# class HotelList(generic.ListView):
+#     model = Hotel
+#     queryset = Hotel.objects.order_by('-created_on')
+#     template_name = 'map.html'
+#     paginate_by = 6
 
 
 def review_form(request, slug=""):
@@ -201,6 +201,8 @@ def hotel_delete(request, id):
     hotel = get_object_or_404(Hotel, pk=id)
     hotel.delete()
     return redirect('/list/')
+
+
 
 
 

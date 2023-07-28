@@ -39,7 +39,7 @@
                         <a class="nav-link" aria-current="page" href="{% url 'blog' %}">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{% url 'map' %}">Map</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'hotels' %}">Hotels</a>
                     </li>
                     {% if user.is_superuser %}
                     <li class="nav-item">
@@ -94,8 +94,7 @@
     
     {% block scripts %}
     {% endblock %}
-    <script src="../static/js/maps.js"></script>
-    <script src="../static/js/script.js"></script>
+    
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEWSKsRLaEXtpt3tjuxRDvS20MnC0zgU8&callback=initMap"></script>
     
