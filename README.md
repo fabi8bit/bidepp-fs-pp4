@@ -179,6 +179,9 @@ https://stackoverflow.com/questions/28516101/django-how-to-pass-template-variabl
 form creation
 https://medium.com/jungletronics/a-django-blog-in-vs-code-3b6fc8eb19aa
 https://www.javatpoint.com/django-crud-application
-https://www.youtube.com/watch?v=N6jzspc2kds&t=3387s 
+https://www.youtube.com/watch?v=N6jzspc2kds&t=3387s  i used this tutorial to implement the crud functionality
 https://forum.djangoproject.com/t/how-to-restrict-django-staff-user-to-edit-or-delete-others-staff-user-post-from-admin-panel/7887
 https://www.youtube.com/watch?v=TAH01Iy5AuE
+
+search bar
+https://www.youtube.com/watch?v=AGtae4L5BbI

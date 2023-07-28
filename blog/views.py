@@ -202,6 +202,16 @@ def hotel_delete(request, id):
     hotel.delete()
     return redirect('/list/')
 
+def search_hotels(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        hotels = Hotel.objects.filter(country__icontains=searched)
+        return render(request, "search_hotels.html", {
+            'searched': searched,
+            'hotels': hotels
+            })
+    else:
+        return render(request, "hotels.html", {})
 
 
 

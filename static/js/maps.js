@@ -42,7 +42,7 @@ function initMap() {
     marker.addEventListener('mouseover', function() {
         infowindow.open(map, marker);
         infowindow.setContent("<div>dio can</div>")
-        console.log("Hello world!");
+        
     })
     
 }

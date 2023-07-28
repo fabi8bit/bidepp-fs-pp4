@@ -7,6 +7,7 @@ from .views import review_form
 urlpatterns = [
     path('', views.IndexHome.as_view(
         template_name='index.html', paginate_by=3), name='home'),
+    
     # insert new Review
     path('form/', views.review_form, name='review_form'),
     # update Review
@@ -25,8 +26,11 @@ urlpatterns = [
         template_name='blog.html', paginate_by=6), name='blog'),
     path('hotels/', views.IndexHome.as_view(
         template_name='hotels.html', paginate_by=6), name='hotels'),
+    path('search_hotels/', views.search_hotels, name='search_hotels'),
     path('<int:id>/', views.HotelDetail.as_view(), name='hotel_detail'),
     path('<slug:slug>/', views.ReviewDetail.as_view(), name='review_detail'),
     path('<int:id>/', views.HotelDetail.as_view(), name='hotel_detail'),
     path('like/<slug:slug>', views.ReviewLike.as_view(), name='review_like'),
+    
+    
 ]

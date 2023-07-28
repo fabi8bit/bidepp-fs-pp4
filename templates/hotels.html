@@ -15,9 +15,10 @@
     
       <div class="row">
           <div class="mt-4 col-md-8">
-            <form class="form-inline">
-              <input class="mr-sm-2 d-inline" type="text" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0 d-inline" type="submit">Search</button>
+            <form class="form-inline" method="POST" action="{% url 'search_hotels' %}">
+              {% csrf_token %}
+              <input class="mr-sm-2 d-inline" type="text" placeholder="Search by country" aria-label="Search" name="searched">
+              <button class="btn btn-outline-secondary my-2 my-sm-0 d-inline" type="submit">Search</button>
             </form>
           </div>
       </div>
