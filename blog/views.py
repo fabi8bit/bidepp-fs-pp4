@@ -12,11 +12,34 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class ReviewList(generic.ListView):
     model = Review
-    queryset = Review.objects.filter(status=1).order_by('-created_on')
+    # queryset = Review.objects.filter(status=1).order_by('-created_on')
     # template_name = 'blog.html'    *** moved to urls path as argument,
     # paginate_by = 6    *** moved to urls path as argument
     # so we can use the same class to display the blog and the list
     # for editing operations (update, delete).
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['review'] = Review.objects.filter(status=1).order_by('-created_on')
+        context['navbar'] = 'blog'
+        return context
+
+
+class ManageList(generic.ListView):
+    model = Review
+    # queryset = Review.objects.filter(status=1).order_by('-created_on')
+    # template_name = 'blog.html'    *** moved to urls path as argument,
+    # paginate_by = 6    *** moved to urls path as argument
+    # so we can use the same class to display the blog and the list
+    # for editing operations (update, delete).
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['review'] = Review.objects.filter(status=1).order_by('-created_on')
+        context['hotel'] = Hotel.objects.order_by('-created_on')
+        context['navbar'] = 'manage'
+        return context
+
 
 
 class ReviewDetail(View):
@@ -131,9 +154,24 @@ class HotelDetail(View):
 
 class IndexHome(generic.ListView):
     model = Hotel
-    queryset = Hotel.objects.order_by('-created_on')
-    # template_name = 'index.html'
-    # paginate_by = 3
+    # queryset = Hotel.objects.order_by('-created_on')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['hotel'] = Hotel.objects.order_by('-created_on')
+        context['navbar'] = 'home'
+        context['navbar2'] = 'hotels'
+        return context
+
+
+class HotelList(generic.ListView):
+    model = Hotel
+    # queryset = Hotel.objects.order_by('-created_on')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['hotel'] = Hotel.objects.order_by('-created_on')
+        context['navbar'] = 'hotels'
+        
+        return context
 
 
 # class HotelList(generic.ListView):

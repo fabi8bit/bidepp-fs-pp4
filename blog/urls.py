@@ -20,11 +20,11 @@ urlpatterns = [
     path('hotelform/', views.hotel_form, name='hotel_form'),
     # update Hotel
     path('hotelform/<int:id>/', views.hotel_form, name='hotel_update'),
-    path('list/', views.ReviewList.as_view(
+    path('list/', views.ManageList.as_view(
         template_name='review_list.html'), name='review_list'),
     path('blog/', views.ReviewList.as_view(
         template_name='blog.html', paginate_by=6), name='blog'),
-    path('hotels/', views.IndexHome.as_view(
+    path('hotels/', views.HotelList.as_view(
         template_name='hotels.html', paginate_by=6), name='hotels'),
     path('search_hotels/', views.search_hotels, name='search_hotels'),
     path('<int:id>/', views.HotelDetail.as_view(), name='hotel_detail'),

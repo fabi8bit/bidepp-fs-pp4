@@ -185,3 +185,6 @@ https://www.youtube.com/watch?v=TAH01Iy5AuE
 
 search bar
 https://www.youtube.com/watch?v=AGtae4L5BbI
+
+- Navigation menu - highlight active link:
+In order to highlight the links in the navigation bar, I created a specific context in views.py, to be passed to the specific template. For the generic views I refered to [this post](https://stackoverflow.com/questions/59678466/return-dictionary-from-generic-list-view)
