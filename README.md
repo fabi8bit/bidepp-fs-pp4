@@ -1,6 +1,6 @@
 # Bidepp
 
-![Bidepp Banner](documentation/readme/banner.png)
+![Bidepp Banner](readme_assets/readme_img/bidepp_screenshot.webp)
 
 Bidepp is a full stack blog website. It's built using Django, Python, HTML, CSS and JavaScript. This project was created as my fourth portfolio project for my Diploma in Web Application Development at Code Institute.
 
@@ -50,16 +50,17 @@ Before dove into coding I sketched roughly some ideas on paper and wrote down so
 
 |User Type | Feature |  Delivered |
 | :--- | :--- | :---: | 
-| User | Sign up for an account | no |
+| User | Sign up for an account | yes |
 | User | See the list of reviews | yes |
 | User | Read the detailed reviews | yes |
-| User | Read the comments on the review | no |
-| Registered User | Comment on reviews | no |
-| User | See number of likes | no |
-| Registered User | Like reviews | no |
-| User | See the list of hotels | no |
+| User | Read the comments on the review | yes |
+| Registered User | Comment on reviews | yes |
+| User | See number of likes | yes |
+| Registered User | Like reviews | yes |
+| User | See the list of hotels | yes |
+| User | See the hotels details | yes |
 | User | See all the featured hotels on a map | no |
-| Registered User | See the location of the hotels on a map | no |
+| User | See the location of the hotels on a map | yes |
 | Registered User | Set Hotel as preferred | no |
 
 ---
