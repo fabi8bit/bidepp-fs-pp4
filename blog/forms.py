@@ -18,7 +18,8 @@ class CreateReviewForm(forms.ModelForm):
 
     # this method initialize the list of the dropdown menu
     # and replace the empty label "----" with "Select"
-    # taken from this tutorial https://www.youtube.com/watch?v=N6jzspc2kds&t=3387s
+    # taken from this tutorial:
+    # https://www.youtube.com/watch?v=N6jzspc2kds&t=3387s
 
     def __init__(self, *args, **kwargs):
         super(CreateReviewForm, self).__init__(*args, **kwargs)
@@ -33,7 +34,8 @@ class CreateHotelForm(forms.ModelForm):
 
     # this method initialize the list of the dropdown menu
     # and replace the empty label "----" with "Select"
-    # taken from this tutorial https://www.youtube.com/watch?v=N6jzspc2kds&t=3387s
+    # taken from this tutorial:
+    # https://www.youtube.com/watch?v=N6jzspc2kds&t=3387s
 
     def __init__(self, *args, **kwargs):
         super(CreateHotelForm, self).__init__(*args, **kwargs)

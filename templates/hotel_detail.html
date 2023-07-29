@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+
+{% load static %}
+
 {% block content %}
 
 
@@ -13,9 +16,9 @@
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 {% if "placeholder" in review.featured_image.url %}
-                <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
+                <img src="{% static 'images/PlaceholderBidepp.webp' %}" alt="placeholder image" width="100%">
                 {% else %}
-                <img src="{{ hotel.hotel_image.url }}" width="100%">
+                <img src="{{ hotel.hotel_image.url }}" alt="image for {{ hotel.name }}" width="100%">
                 {% endif %}
             </div>
         </div>
@@ -37,6 +40,7 @@
             <p class="post-subtitle"> {{ hotel.longitude }} | {{ hotel.latitude }}</p>
         </div>
     </div>
+    {% if reviews.count > 0 %}
     <div class="row">
         <div class="col-md-8 card mb-4 mt-3">
             <h3>{{ hotel.name }} appears in the following reviews:</h3>
@@ -51,7 +55,7 @@
                             <div class="image-container">
                                 {% if "placeholder" in review.featured_image.url %}
                                 <img class="card-img-top"
-                                    src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
+                                    src="{% static 'images/PlaceholderBidepp.webp' %}" alt="placeholder image">
                                 {% else %}
                                 <img class="card-img-top" src=" {{ review.featured_image.url }}">
                                 {% endif %}
@@ -59,27 +63,17 @@
                             <h2 class="card-title">{{ review.title }}</h2>
                             <p class="card-text">{{ review.excerpt }}</p>
                         </a>
-                        <!-- {% if user.is_superuser %}
-                            <hr/>
-                            <div>
-                                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="#">Update</a>
-                                <a class="btn btn-danger btn-sm mt-1 mb-1" href="#">Delete</a>
-                            </div>
-                        {% endif %} -->
-
                     </div>
                 </div>
             </div>
-            
-
             {% if forloop.counter|divisibleby:3 %}
         </div>
         <div class="row">
             {% endif %}
             {% endfor %}
-
         </div>
     </div>
+    {% endif %}
 </div>
 {% if is_paginated %}
 <nav aria-label="Page navigation">
@@ -90,21 +84,21 @@
         {% endif %}
         {% if page_obj.has_next %}
         <li><a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-light btn-block">&raquo;</a></li>
-
         {% endif %}
     </ul>
 </nav>
 {% endif %}
 
-
-
-
-
 {% endblock content %}
 
 {% block scripts %}
+
 <!-- block.super will get the content of the block from the parent template -->
+
 {{ block.super }}
+
+<!-- variables to retrieve the map location -->
+
 <script>
     var hotelLat = {{ hotel.latitude }};
     var hotelLng = {{ hotel.longitude }};

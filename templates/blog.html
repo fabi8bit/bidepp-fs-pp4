@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block content %}
 
 <div class="container-fluid">
@@ -16,9 +18,9 @@
                                 <div class="image-container">
                                     {% if "placeholder" in review.featured_image.url %}
                                     <img class="card-img-top"
-                                        src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
+                                        src="{% static 'images/PlaceholderBidepp.webp' %}" alt="placeholder image">
                                     {% else %}
-                                    <img class="card-img-top" src=" {{ review.featured_image.url }}">
+                                    <img class="card-img-top" src=" {{ review.featured_image.url }}" alt="image for {{ review.title }}">
                                     {% endif %}
                                     <div class="image-flash">
                                         <p class="author">Author: {{ review.author }}</p>
@@ -30,13 +32,6 @@
                             <hr />
                             <p class="card-text text-muted h6">{{ review.hotel }}, {{ review.hotel.country }} <i class="far fa-heart"></i>
                                 {{ review.number_of_likes }}</p>
-                            <!-- {% if user.is_superuser %}
-                            <hr/>
-                            <div>
-                                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="#">Update</a>
-                                <a class="btn btn-danger btn-sm mt-1 mb-1" href="#">Delete</a>
-                            </div>
-                            {% endif %} -->
                         </div>
                     </div>
                 </div>
@@ -45,7 +40,6 @@
             <div class="row">
                 {% endif %}
                 {% endfor %}
-
             </div>
         </div>
     </div>

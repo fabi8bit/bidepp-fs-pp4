@@ -5,59 +5,59 @@
 
 
 <div class="container-fluid">
-  <div class="row mt-4 dark-bg">
-    <div class="col-12 mt-3 left">
-      <div class="row">
-        <div class="mt-4 col-md-8">
-          <form class="form-inline" method="POST" action="{% url 'search_hotels' %}">
-            {% csrf_token %}
-            <input class="mr-sm-2 d-inline" type="text" placeholder="Search by country" aria-label="Search"
-              name="searched">
-            <button class="btn btn-outline-secondary my-2 my-sm-0 d-inline" type="submit">Search</button>
-          </form>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card-body">
-            {% if searched %}
-            <h4>You searched for {{ searched }}</h4>
-            {% else %}
-            <h4>whoever seeks will find</h4>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-      <hr />
-      <div class="row">
-        {% for hotel in hotels %}
-        <div class="col-md-4">
-          <div class="card mb-4">
-            <div class="card-body">
-              <hr />
-              <a href="{% url 'hotel_detail' hotel.id %}" class="post-link">
-                <div class="image-container">
-                  {% if "placeholder" in hotel.hotel_image.url %}
-                  <img class="card-img-top" src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
-                  {% else %}
-                  <img class="card-img-top" src=" {{ hotel.hotel_image.url }}">
-                  {% endif %}
+    <div class="row mt-4 dark-bg">
+        <div class="col-12 mt-3 left">
+            <div class="row">
+                <div class="mt-4 col-md-8">
+                    <form class="form-inline" method="POST" action="{% url 'search_hotels' %}">
+                        {% csrf_token %}
+                        <input class="mr-sm-2 d-inline" type="text" placeholder="Search by country" aria-label="Search"
+                          name="searched">
+                        <button class="btn btn-outline-secondary my-2 my-sm-0 d-inline" type="submit">Search</button>
+                    </form>
                 </div>
-                <p class="card-text">Country: {{ hotel.country }}</p>
-                <h2 class="card-title">{{ hotel.name }}</h2>
-                <p class="card-text">{{ hotel.address }}</p>
-              </a>
             </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card-body">
+                        {% if searched %}
+                        <h4>You searched for {{ searched }}</h4>
+                        {% else %}
+                        <h4>whoever seeks will find</h4>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                {% for hotel in hotels %}
+                  <div class="col-md-4">
+                      <div class="card mb-4">
+                          <div class="card-body">
+                              <hr />
+                              <a href="{% url 'hotel_detail' hotel.id %}" class="post-link">
+                                  <div class="image-container">
+                                      {% if "placeholder" in hotel.hotel_image.url %}
+                                      <img class="card-img-top" src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
+                                      {% else %}
+                                      <img class="card-img-top" src=" {{ hotel.hotel_image.url }}">
+                                      {% endif %}
+                                  </div>
+                                  <p class="card-text">Country: {{ hotel.country }}</p>
+                                  <h2 class="card-title">{{ hotel.name }}</h2>
+                                  <p class="card-text">{{ hotel.address }}</p>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+                {% if forloop.counter|divisibleby:3 %}
+          </div>
+          <div class="row">
+            {% endif %}
+            {% endfor %}
           </div>
         </div>
-        {% if forloop.counter|divisibleby:3 %}
-      </div>
-      <div class="row">
-        {% endif %}
-        {% endfor %}
-      </div>
     </div>
-  </div>
 </div>
 
 {% endblock %}

@@ -7,16 +7,16 @@
     <h3>Hotel details</h3>
     <p>You are logged in as <strong>{{ user }}</strong></p>
     <form class="signup" id="signup_form" method="post" autocomplete="off" enctype='multipart/form-data' action="">
-      {{ form | crispy }}
-      {% csrf_token %}
-      <button class="btn btn-success " type="submit">Submit</button>
-      <button class="btn btn-danger" type="button" onclick="location.href={% url 'review_list' %}">Back to Hotels list</button>
+        {{ form | crispy }}
+        {% csrf_token %}
+        <button class="btn btn-success " type="submit">Submit</button>
+        <button class="btn btn-danger" type="button" onclick="location.href={% url 'review_list' %}">Back to Hotels list</button>
     </form>
 </div>
 {% else %}
 <div class="text-center form-review mt-4">
-  <p>Access denied</p>
-  <button class="btn btn-lg btn-outline-light btn-block" type="button" onclick="location.href={% url 'blog' %}">Go Back</button>
+    <p>Access denied</p>
+    <button class="btn btn-lg btn-outline-light btn-block" type="button" onclick="location.href={% url 'blog' %}">Go Back</button>
 </div>
 {% endif %}
 

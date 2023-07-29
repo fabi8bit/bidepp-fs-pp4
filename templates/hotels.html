@@ -1,114 +1,69 @@
 {% extends 'base.html' %}
+
+{% load static %}
+
 {% block content %}
 
 
-<!-- <div class="container">
-  <div class="row">
-    <div class="card mb-4 mt-3">
-      <div id="map"></div>
-    </div>
-  </div>
-</div> -->
 <div class="container-fluid">
-<div class="row mt-4 dark-bg">
-  <div class="col-12 mt-3 left">
-    
-      <div class="row">
-          <div class="mt-4 col-md-8">
-            <form class="form-inline" method="POST" action="{% url 'search_hotels' %}">
-              {% csrf_token %}
-              <input class="mr-sm-2 d-inline" type="text" placeholder="Search by country" aria-label="Search" name="searched">
-              <button class="btn btn-outline-secondary my-2 my-sm-0 d-inline" type="submit">Search</button>
-            </form>
-          </div>
-      </div>
-      <div class="row">
-          {% for hotel in hotel_list %}
-          <div class="col-md-4">
-              <div class="card mb-4">
-                  <div class="card-body">
-                      <hr />
-                      <a href="{% url 'hotel_detail' hotel.id %}" class="post-link">
-                          <div class="image-container">
-                              {% if "placeholder" in hotel.hotel_image.url %}
-                              <img class="card-img-top"
-                                  src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
-                              {% else %}
-                              <img class="card-img-top" src=" {{ hotel.hotel_image.url }}">
-                              {% endif %}
-                          </div>
-                          <p class="card-text">Country: {{ hotel.country }}</p>
-                          <h2 class="card-title">{{ hotel.name }}</h2>
-                          <p class="card-text">{{ hotel.address }}</p>
-                      </a>
-                      <!-- {% if user.is_superuser %}
-                          <hr/>
-                          <div>
-                              <a class="btn btn-secondary btn-sm mt-1 mb-1" href="#">Update</a>
-                              <a class="btn btn-danger btn-sm mt-1 mb-1" href="#">Delete</a>
-                          </div>
-                      {% endif %} -->
+    <div class="row mt-4 dark-bg">
+        <div class="col-12 mt-3 left">
+            <div class="row">
+                <div class="mt-4 col-md-8">
+                    <form class="form-inline" method="POST" action="{% url 'search_hotels' %}">
+                        {% csrf_token %}
+                        <input class="mr-sm-2 d-inline" type="text" placeholder="Search by country" aria-label="Search" name="searched">
+                        <button class="btn btn-outline-secondary my-2 my-sm-0 d-inline" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                {% for hotel in hotel_list %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <hr />
+                            <a href="{% url 'hotel_detail' hotel.id %}" class="post-link">
+                                <div class="image-container">
+                                    {% if "placeholder" in hotel.hotel_image.url %}
+                                    <img class="card-img-top"
+                                        src="{% static 'images/PlaceholderBidepp.webp' %}" alt="placeholder image">
+                                    {% else %}
+                                    <img class="card-img-top" src=" {{ hotel.hotel_image.url }}" alt="image for {{ hotel.name }}">
+                                    {% endif %}
+                                </div>
+                                <p class="card-text">Country: {{ hotel.country }}</p>
+                                <h2 class="card-title">{{ hotel.name }}</h2>
+                                <p class="card-text">{{ hotel.address }}</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 %}
+            </div>
+            <div class="row">
+                {% endif %}
+                {% endfor %}
 
-                  </div>
-              </div>
-          </div>
-          {% if forloop.counter|divisibleby:3 %}
-      </div>
-      <div class="row">
+            </div>
+        </div>
+    </div>
+
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center dark-bg">
+          {% if page_obj.has_previous %}
+          <li><a href="?page={{ page_obj.previous_page_number }}"
+                  class="btn btn-outline-light btn-block">&laquo;</a></li>
           {% endif %}
-          {% endfor %}
+          {% if page_obj.has_next %}
+          <li><a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-light btn-block">&raquo;</a></li>
 
-      </div>
-  </div>
-</div>
-
-{% if is_paginated %}
-<nav aria-label="Page navigation">
-  <ul class="pagination justify-content-center dark-bg">
-      {% if page_obj.has_previous %}
-      <li><a href="?page={{ page_obj.previous_page_number }}"
-              class="btn btn-outline-light btn-block">&laquo;</a></li>
-      {% endif %}
-      {% if page_obj.has_next %}
-      <li><a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-light btn-block">&raquo;</a></li>
-
-      {% endif %}
-  </ul>
-</nav>
-{% endif %}
+          {% endif %}
+      </ul>
+    </nav>
+    {% endif %}
 </div>
 
 
-
 {% endblock %}
-
-{% block scripts %}
-<!-- block.super will get the content of the block from the parent template -->
-{{ block.super }}
-<!-- <script>
-    var locations_list = [
-      {% for hotel in hotel_list %} 
-      { lat: {{ hotel.latitude}}, lng: {{ hotel.longitude }} },
-      {% endfor %}];
-
-    // var hotel_info = [
-    // {% for hotel in hotel_list %} 
-    // {
-    //   name: {{ hotel.name }},
-    //   address: {{ hotel.address }},
-    //   city: {{ hotel.city }},
-    //   country: {{ hotel.country }}
-    // }
-    // {% endfor %}];
-
-      
-    
-    var hotelLat = 45.95115;
-    var hotelLng = 10.502986;
-    var zoom_factor = 3;
-</script>
-<script src="../static/js/maps.js"></script>
-<script src="../static/js/script.js"></script> -->
-
-{% endblock %}
-

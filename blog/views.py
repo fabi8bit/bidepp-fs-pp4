@@ -7,40 +7,28 @@ from .forms import CommentForm, CreateReviewForm, CreateHotelForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-# def index_home(request):
-#     return render(request, 'index.html')  
-
 class ReviewList(generic.ListView):
     model = Review
     queryset = Review.objects.filter(status=1).order_by('-created_on')
-    # template_name = 'blog.html'    *** moved to urls path as argument,
-    # paginate_by = 6    *** moved to urls path as argument
-    # so we can use the same class to display the blog and the list
-    # for editing operations (update, delete).
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['review'] = Review.objects.filter(status=1).order_by('-created_on')
+        context['review'] = Review.objects.filter(status=1).order_by(
+            '-created_on')
         context['navbar'] = 'blog'
         return context
 
 
 class ManageList(generic.ListView):
     model = Review
-    # queryset = Review.objects.filter(status=1).order_by('-created_on')
-    # template_name = 'blog.html'    *** moved to urls path as argument,
-    # paginate_by = 6    *** moved to urls path as argument
-    # so we can use the same class to display the blog and the list
-    # for editing operations (update, delete).
-    
+    queryset = Review.objects.filter(status=1).order_by('-created_on')
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['review'] = Review.objects.filter(status=1).order_by('-created_on')
+        context['review'] = Review.objects.filter(status=1).order_by(
+            '-created_on')
         context['navbar'] = 'manage'
         return context
-
-
-
 
 
 class ReviewDetail(View):
@@ -75,7 +63,6 @@ class ReviewDetail(View):
 
         comment_form = CommentForm(data=request.POST)
         invalid_form = False
-        
 
         if comment_form.is_valid():
             comment_form.instance.email = request.user.email
@@ -110,27 +97,9 @@ class ReviewLike(View):
             review.likes.remove(request.user)
         else:
             review.likes.add(request.user)
-        
+
         return HttpResponseRedirect(reverse('review_detail', args=[slug]))
 
-
-# class HotelDetail(View):
-
-#     def get(self, request, id, *args, **kwargs):
-#         queryset = Hotel.objects.all()
-#         hotel = get_object_or_404(queryset, pk=id)
-#         preferred = False
-#         if hotel.preferred.filter(userid=self.request.user.id).exists():
-#             liked = True
-
-#         return render(
-#             request,
-#             "hotel_detail.html",
-#             {
-#                 "hotel": hotel,
-#                 "preferred": preferred,
-#             },
-#         )
 
 class HotelDetail(View):
 
@@ -150,36 +119,26 @@ class HotelDetail(View):
         )
 
 
-        
-
-
 class IndexHome(generic.ListView):
     model = Hotel
-    # queryset = Hotel.objects.order_by('-created_on')
+    queryset = Hotel.objects.order_by('-created_on')
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['hotel'] = Hotel.objects.order_by('-created_on')
         context['navbar'] = 'home'
-        context['navbar2'] = 'hotels'
+
         return context
 
 
 class HotelList(generic.ListView):
     model = Hotel
-    # queryset = Hotel.objects.order_by('-created_on')
+    queryset = Hotel.objects.order_by('-created_on')
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['hotel'] = Hotel.objects.order_by('-created_on')
         context['navbar'] = 'hotels'
-        
+
         return context
-
-
-# class HotelList(generic.ListView):
-#     model = Hotel
-#     queryset = Hotel.objects.order_by('-created_on')
-#     template_name = 'map.html'
-#     paginate_by = 6
 
 
 def review_form(request, slug=""):
@@ -222,8 +181,6 @@ def hotel_form(request, id=0):
         return render(request, "hotel_form.html", {'form': form})
     else:
         if id == 0:
-            # solution from here:
-            # https://stackoverflow.com/questions/59663492/django-form-successful-but-image-not-uploaded
             form = CreateHotelForm(request.POST, request.FILES or None)
         else:
             hotel = Hotel.objects.get(pk=id)
@@ -241,6 +198,7 @@ def hotel_delete(request, id):
     hotel.delete()
     return redirect('/list/')
 
+
 def search_hotels(request):
     if request.method == "POST":
         searched = request.POST['searched']
@@ -251,10 +209,3 @@ def search_hotels(request):
             })
     else:
         return render(request, "hotels.html", {})
-
-
-
-
-    
-
-

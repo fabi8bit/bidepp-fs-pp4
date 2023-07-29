@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+
+{% load static %}
+
 {% block content %}
 
 {% load crispy_forms_tags %}
@@ -16,9 +19,9 @@
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 {% if "placeholder" in review.featured_image.url %}
-                <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
+                <img src="{% static 'images/PlaceholderBidepp.webp' %}" alt="placeholder image" width="100%">
                 {% else %}
-                <img src="{{ review.featured_image.url }}" width="100%">
+                <img src="{{ review.featured_image.url }}" alt="image for {{ review.title }}" width="100%">
                 {% endif %}
             </div>
         </div>
@@ -116,8 +119,13 @@
 {% endblock content %}
 
 {% block scripts %}
+
 <!-- block.super will get the content of the block from the parent template -->
+
 {{ block.super }}
+
+<!-- variables to retrieve the map location -->
+
 <script>
     var locations_list = [
       { lat: {{ review.hotel.latitude }}, lng: {{ review.hotel.longitude }} },];

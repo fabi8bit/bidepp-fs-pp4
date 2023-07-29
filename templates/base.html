@@ -62,11 +62,13 @@
                     </li>
                     {% endif %}
                 </ul>
+                {% if user.is_authenticated %}
                 <div class="user-logged">
                     <div class="nav-item align-baseline">
                         <div href="{% url 'account_logout' %}">Logged In as <strong>{{ user }}</strong></div>
                     </div>
                 </div>
+                {% endif %}
             </div>
         </div>
     </nav>
@@ -86,11 +88,14 @@
 
     <main class="flex-shrink-0 main-bg">
         {% block content %}
-        <!-- Content Goes here -->
+
+        <!-- Content -->
+
         {% endblock content %}
     </main>
 
     <!-- Footer -->
+    
     <footer class="footer mt-auto py-3 bg-secondary">
         <p class="m-0 text-center text-white">KFB Bidet Bloggers</p>
         <p class="m-0 text-center text-white">
