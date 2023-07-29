@@ -116,6 +116,9 @@ The logo was designed by me using Adobe Illustrator. I was inspired by the butto
 ![elctric_toilet_seat](readme_assets/readme_img/electric_toilet_seat.png)
 It was very easy to flip by 90 degrees the B of the name Bidepp and get an elegant little but!
 ![bidepp_logo](readme_assets/readme_img/bidepp_logo_compositing.png)
+
+### *Colors and Typografy*
+For the colors and typography I decided to use a minimalistic style in order to enhance the overall readability. The website is based on a high contrast gray scale with whiteish text. The font used is Lato and it's taken from google-font in 2 weights (300 and 700). The weight 300 is used mainly for the paragraphs while the 700 is mostly used for all the range of the 'h' elements.
  
 
 
@@ -147,6 +150,43 @@ It was very easy to flip by 90 degrees the B of the name Bidepp and get an elega
 
 
 
+## General features
+### Navigation bar
+Active link highlight:
+In order to highlight the links in the navigation bar, I created a specific context in views.py, to be passed to the specific template. For the generic views I refered to [this video](https://www.youtube.com/watch?v=aGnVZwp47do)
+
+### Guest and Registered User
+Bidepp is a classic blog websites that feauters a log in page. A logged user has the ability to comment on reviews or express preferences through the like button. 
+For comments I used django-crispy-forms. By default, in the template, I didn'like the label of Body and with a little bit of research I found how to tweak it. I also didn't like the use of * (asterisk) to denote a required fields for comments. In the documentation I found out that the asterisks have an asteriskField class set. So I could hide it using display: none  in the CSS file.
+Comments and overall likes are still visible to the guest user who are not logged in.
+The guest users can also see the reviews list and hotels list as well as the details for reviews and hotels.
+Both the Review detail and Hotel detail feature a map that show the exact position of the Hotel. The coordinates are stored in the database at the moment of the Hotel creation. The map is displayed on the page using the Google Maps API. At this stage the Map functionality is still very rudimental but is something I would like to develop in the future.
+
+### Superuser and defensive programming
+The admin or superuser has special privileges. When loggedin as superuser the manage menu appears in the top navbar. Through this page is possible to create new reviews, add new hotels, edit already existing reviews and hotels and delete them.
+Defensive programming has been used for the management of this section to prevent unauthorized users to access restricted functionalities like writing reviews. This has been accomplished through the permission check in class-based views:
+I used a Django built-in class named UserPassesTestMixin to ensure that only users that pass a permission test are allowed to access the class-based view.
+
+## Future development and ideas
+- The 403, and 404 http response is not handled due to time constraints (deadline is in a few hours!!!), but it's planned to build a specific html page to display this response.
+
+- A registered user can give preferences for the hotels and have them listed inside a private page.
+
+- Cluster Map: Display on a map all the hotels reviewed. Hovering a marker with the mouse will give all the informations about the specific hotel
+
+- Integrated Booking system
+
+- Password management for registered users
+
+- Send newsletters to users
+
+## Accessibility
+
+- Use of semantic HTML
+- Alt attributes for screen readers used on all the images of the site
+- Great color contrast between background and text
+
+## Testing
 
 
 
@@ -156,29 +196,30 @@ It was very easy to flip by 90 degrees the B of the name Bidepp and get an elega
 
 
 
-for comments I used django-crispy-forms. By default, in the template, I didn'like the label of Body and with a little bit of research I found how to tweak it. I also didn't like the use of * (asterisk) to denote a required fields for comments. In the documentation I found out that Asterisks have an asteriskField class set. So I could hide it using display: none  in the CSS file.
+
+
+
+
+
 
 
 TESTING
-Clear form after submitting
+
 httpResponseRedirect didnt work. So I tried with JS
 
 The Review and Hotel managing panel, at this stage, is able to display only the Published review and the Hotels associated with it (all the reviews and hotels are accessible from the admin page). In order to retrieve the data for all the reviews, I decided to use the same class as for the blog. A possible solution is to duplicate the class and delete the filter in order to display both the draft and published reviews.
 Hotels are only visible when associated to a review because it's a blog reviewing Hotels and not an Hotels directory.
+
 The slug field in the new Review form is not automatic and has to be generated manually. It's fully automatic in the admin page. A possible solution is to implement a javascript I found at [this link](https://gist.github.com/codeguy/6684588) or [this link](https://stackoverflow.com/questions/12098319/how-add-a-pre-populated-field-to-a-form-submission-in-django-like-in-admin)
 
 - Deleting Reviews not working until I moved the order of the urls path
 - Deleting Hotel not working until I moved the order of the urls path
-- After the second time I moved the path order in the urls I researched and found this [post](https://stackoverflow.com/questions/36429144/page-not-found-404-no-post-matches-the-given-query) that partially explain what's happening
+- After the second time I moved the path order in the urls I researched and found this 
 
 
 
-FUTURE IMPLEMENTATION
-- The 403 http response is not handled due to time (deadline is in a few hours :(, but it's planned to build a specific html page to display this response.
 
-- The 404 http response is not handled due to time (deadline is in a few hours :(, but it's planned to build a specific html page to display this response.
 
-- A user can give preferences for the hotels and have them listed inside a private page.
 
 -
 
@@ -235,6 +276,9 @@ https://www.youtube.com/watch?v=TAH01Iy5AuE
 search bar
 https://www.youtube.com/watch?v=AGtae4L5BbI
 
-- Navigation menu - highlight active link:
-In order to highlight the links in the navigation bar, I created a specific context in views.py, to be passed to the specific template. For the generic views I refered to [this post](https://stackoverflow.com/questions/59678466/return-dictionary-from-generic-list-view)
+https://stackoverflow.com/questions/59678466/return-dictionary-from-generic-list-view
+
+Active link highlight:
+In order to highlight the links in the navigation bar, I created a specific context in views.py, to be passed to the specific template. For the generic views I refered to [this video](https://www.youtube.com/watch?v=aGnVZwp47do)
+
 
