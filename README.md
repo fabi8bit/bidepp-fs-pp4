@@ -76,7 +76,7 @@ After defining the feature for the blog I lined up the user stories as follows:
 | 3 | Preferences | User | Like or Unlike reviews | I can express my preferences |
 | 4 | Comments on Reviews| User | leave my comments | other users can read my opinion |
 | 5 | Open reviews | User | click on a post | I can read the full review |
-| 6 | Read the blog | User | view the blog | I can read the reviews |
+| 6 | Read the reviews | User | view the blog | I can read the reviews |
 | 7 | View likes | User | view the number of likes | I understand which is the most popular review |
 | 8 | View comments | User | read comments on a single review | I understand what other people think |
 | 9 | Write Reviews | Admin | create, read, update, delete Reviews | I have complete controll on the blog |
@@ -109,7 +109,45 @@ For the Hotel model I installed an external library called django-countries.It p
 
 ---
 ---
-### *Wireframes*
+## Design
+
+### *Logo*
+The logo was designed by me using Adobe Illustrator. I was inspired by the button signs you can find on some special toilet seats largely diffuse in Korea, Indonesia, and Japan.
+![elctric_toilet_seat](readme_assets/readme_img/electric_toilet_seat.png)
+It was very easy to flip by 90 degrees the B of the name Bidepp and get an elegant little but!
+![bidepp_logo](readme_assets/readme_img/bidepp_logo_compositing.png)
+ 
+
+
+### *Wireframes and actual pages*
+
+* Base Template: It contains the header and the footer of the whole site. The content of the other pages are injected into this template using the template tags
+![Wireframe_base]()
+
+* Index: it's the Home page of the site. It contains a brief explanation Bidepp and a button to access the blog. At the bottom it features a paginated list of the 3 most recent Hotels added to the database. The elements are clickable and they are linked to the detail view of the specific Hotel
+![Wireframe_index]()
+
+* Reviews: In this page are listed all the reviews from the most recent to the oldest. All the elements are clickable and linked to the specific review. For UX reasons the posts are paginated by 6 reviews. If there are more than 6 reviews, a clickable arrow will appear at the bottom of the section to access the next reviews.
+![Wireframe_blog]()
+
+* Hotels: This is the list of all the Hotels reviewed in the blog. Here is applyed the same logic as for the reviews. It's present a search bar where the user can type in the nation in order to display all the reviewed hotels available for this nation.
+![Wireframe_hotel]()
+
+* Register: A user can register an account here. A registered user can commentate and like the posts.
+![Wireframe_register]()
+
+* Login: If an account is already registered, a user can log in from this page.
+![Wireframe_login]()
+
+* Manage: This link is only visible if a User is logged in as Superuser. On this page are listed all the reviews and from here is possible to operate all the CRUD functionality. On the left up corner there's a button to create a new review, while beside every listed reviews (on the left side) are displayed an edit button and a trash can button which are respectively used to edit and delete the reviews. On the right up corner is present another button to add new hotels to be reviewed. Beside the hotels name (right side) are displayed the same button as for the Reviews but this time are for editing, and deleting the hotels. Deleting the Hotels will result on a cascade deletion of the related reviews.
+![Wireframe_manage]()
+
+
+
+
+
+
+
 
 
 
@@ -135,9 +173,17 @@ The slug field in the new Review form is not automatic and has to be generated m
 
 
 
+FUTURE IMPLEMENTATION
+- The 403 http response is not handled due to time (deadline is in a few hours :(, but it's planned to build a specific html page to display this response.
 
+- The 404 http response is not handled due to time (deadline is in a few hours :(, but it's planned to build a specific html page to display this response.
 
+- A user can give preferences for the hotels and have them listed inside a private page.
 
+-
+
+defensive design
+https://www.webforefront.com/django/permissionchecks.html
 
 Case sensitive username field
 https://simpleisbetterthancomplex.com/article/2021/07/08/what-you-should-know-about-the-django-user-model.html
@@ -191,3 +237,4 @@ https://www.youtube.com/watch?v=AGtae4L5BbI
 
 - Navigation menu - highlight active link:
 In order to highlight the links in the navigation bar, I created a specific context in views.py, to be passed to the specific template. For the generic views I refered to [this post](https://stackoverflow.com/questions/59678466/return-dictionary-from-generic-list-view)
+
