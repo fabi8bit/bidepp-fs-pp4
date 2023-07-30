@@ -6,7 +6,7 @@
 
 <div class="d-flex p-3 mx-auto flex-column container-fluid mb-4">
     <div class="home_claim text-center p-3 mt-4 col-md-6">
-        <img src="{% static 'images/bidepp_logo_square.webp' %}" alt="bidepp logo square" width="80px" height="80px">
+        <img src="{% static 'images/bidepp_logo_square.webp' %}" alt="bidepp logo square" width="80" height="80">
         <h1 class="cover-heading brand">Bidepp</h1>
         <div class="round-container">
             <p class="lead">We are Italians and when we talk toilets, well, we are spoiled! Traveling around the world
@@ -36,7 +36,7 @@
             <div class="col-md-4">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <hr />
+                        <hr/>
                         <a href="{% url 'hotel_detail' hotel.id %}" class="post-link">
                             <div class="image-container">
                                 {% if "placeholder" in hotel.hotel_image.url %}

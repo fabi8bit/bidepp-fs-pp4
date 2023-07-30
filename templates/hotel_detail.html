@@ -57,7 +57,7 @@
                                 <img class="card-img-top"
                                     src="{% static 'images/PlaceholderBidepp.webp' %}" alt="placeholder image">
                                 {% else %}
-                                <img class="card-img-top" src=" {{ review.featured_image.url }}">
+                                <img class="card-img-top" src=" {{ review.featured_image.url }}" alt="image for {{ review.title }}">
                                 {% endif %}
                             </div>
                             <h2 class="card-title">{{ review.title }}</h2>

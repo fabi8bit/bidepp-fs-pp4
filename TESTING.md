@@ -29,7 +29,7 @@ I employed Google's Developer Tools to verify the proper functioning of all elem
 
 ### CSS
 
-[W3C](https://validator.w3.org/) was used to validate the CSS.
+[W3C CSS](https://jigsaw.w3.org/css-validator/) was used to validate the CSS.
 
 | File | Result | Evidence |
 | :--- | :--- | :---: |
@@ -85,6 +85,8 @@ I employed Google's Developer Tools to verify the proper functioning of all elem
 
 ### Wave
 
+[wave](https://wave.webaim.org/)
+
 | Page | Errors |
 | :--- | :--- |
 | Home Page | No errors|
@@ -120,6 +122,14 @@ The site was tested in all the parts and working as expected
 
 #### Map displaying
 - In order to display the map for the hotels, I had to pass data from the database to the map.js using tag template. That was achieved after reading [this post](https://stackoverflow.com/questions/28516101/django-how-to-pass-template-variable-to-javascript-onclick-routine)
+
+## Bugs
+- The counter of the like button is miss alligned. I tried to solve it adding a class called no-gutters but at this stage seems not to solve it. The bug is unresolved
+
+- During the lighthouse test I discovered an issue with the map.js script. As long as the variables for this function to operate are passed from one of the templates, at the moment of the loading those variables are not declared. At the moment this issue is not resolved but a possible solution is to initialize the variables on a separate file.
+
+
+
 
 
 

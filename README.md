@@ -22,6 +22,27 @@ Bidepp is a full stack blog website. It's built using Django, Python, HTML, CSS 
   * [Database Scheme](#database-scheme)
   * [Wireframes](#wireframes)
 
+* [Design](#design)
+  * [Logo](#logo)
+  * [Colors and Typografy](#colors-and-typografy)
+  * [Wireframes and actual pages](#wireframes-and-actual-pages)
+
+* [General features](#general-features)
+  * [Navigation bar](#navigation-bar)
+  * [Guest and Registered User](#guest-and-registered-user)
+  * [Superuser and defensive programming](#superuser-and-defensive-programming)
+
+* [Future development and ideas](#future-development-and-ideas)
+
+* [Accessibility](#accessibility)
+
+* [Testing](#testing)
+
+* [Local Development & Deployment](#local-development-&-deployment)
+
+* [Technology used](#technology-used)
+
+* [Credits](#credits)
 
     
 
@@ -187,8 +208,170 @@ I used a Django built-in class named UserPassesTestMixin to ensure that only use
 - Great color contrast between background and text
 
 ## Testing
+Refer to this document [TESTING.md](TESTING.md)
 
 
+
+
+## Local Development & Deployment
+
+### Django installation and supporting Library
+
+In the requirements.txt file are listed all the dependencies needed to run the project.
+
+#### **Live Database**
+It's also needed to register an account at [ElephantSQL](https://www.elephantsql.com/) for the external database
+
+#### **Create Heroku App**
+Create a new app in heroku giving a unique name
+
+#### **Attach the database**
+Copy the url from the new database created at [ElephantSQL](https://www.elephantsql.com/)
+
+#### **Prepare environment and settings.py
+Create the env.py file inside your project workspace and make sure it is listed inside the gitignore.
+Type the following code:
+```
+import os
+os.environ["DATABASE_URL"]="<copiedURLfromElephantSQL>"
+os.environ["SECRET_KEY"]="my_super^secret@key"
+```
+
+and save the file.
+
+In the settings.py below the path import type this code:
+```
+ import os
+ import dj_database_url
+ if os.path.isfile('env.py'):
+     import env
+```
+
+Remove the insecure secret key provided by django and type this code:
+```
+SECRET_KEY = os.environ.get('SECRET_KEY')
+```
+
+In the DATABASE section comment out the original code and type as follow:
+```
+ # DATABASES = {
+ #     'default': {
+ #         'ENGINE': 'django.db.backends.sqlite3',
+ #         'NAME': BASE_DIR / 'db.sqlite3',
+ #     }
+ # }
+    
+ DATABASES = {
+     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+ }
+```
+
+Save your files and run the migration command in your terminal:
+```
+python manage.py migrate
+```
+
+Connect the new database to Heroku. Head to the dashboard inside Heroku and under settings reveal the config vars. Add the following vars:
+```
+key: DATABASE_URL Value: ElephantSQL url
+key: SECRET-KEY Value: Your secret key
+
+```
+
+#### Get static and media files stored on Cloudinary
+
+- Create an account at [cloudinary.com](https://cloudinary.com/)
+- Copy the API environment variable
+- inside the env.py add this code:
+```
+os.environ["CLOUDINARY_URL"] = "your API environment variable"
+```
+
+- back to Heroku add the same var in the config var
+- inside Heroku add also
+```
+key: DISABLE_COLLECTSTATIC value: 1
+```
+this variable will be removed before the final deployment
+
+- Add Heroku app to the allowed host in settings.py:
+```
+ALLOWED_HOSTS = [
+    'bidepp-cc1716a9edf6.herokuapp.com',
+    '8000-fabi8bit-bideppfspp4-5aqbgymdmss.ws-eu102.gitpod.io']
+```
+
+- set the DEBUG value to False in settings.py:
+```
+DEBUG = False
+```
+- Save the files, add, commit, and push to github
+
+- Head to Heroku dashboard. Under deploy, use GitHub as deployment method. In the github searchbar look for the repo and connect. Head down to the Manual deploy section and deploy branch from main
+
+## Technology used
+#### Languages
+HTML, CSS, Python, Javascript
+
+#### Database
+ElephantSQL
+
+#### Frameworks
+Django 3.2, Bootstrap4
+
+#### Libraries
+- Cloudinary
+- Crispy-forms
+- dj-database
+- django-allauth
+- django-summernote
+- gunicorn
+- psycopg2
+- pyuca
+
+#### Software used
+- Google dev tools
+- Git
+- GitHub
+- Adobe Illustrator
+- Adobe Photoshop
+
+
+## Credits
+
+This project is based on the walkthrough projects from Code Institute called "I think therefore I blog" and "Hello Django".  
+
+This readme file is inspired by a talented former student @ Code Institute [Kera Cudmore](https://github.com/kera-cudmore). I don't know her personally but for me she is a model to follow as a programmer.  
+
+I took also inspiration from many resources that I'll list here:
+
+- defensive design
+https://www.webforefront.com/django/permissionchecks.html
+
+- Case sensitive username field (not used)
+https://simpleisbetterthancomplex.com/article/2021/07/08/what-you-should-know-about-the-django-user-model.html
+
+- Django countries - implement the dropdown menu for the countries in the manage page for Reviews and Hotels
+https://pypi.org/project/django-countries/
+
+- Display the Hotels positions:
+https://stackoverflow.com/questions/73049566/trying-to-get-a-google-maps-to-display-in-django
+
+- django: how to pass template variable to javascript onclick routine.
+Used to pass coordinates for the map.js function
+https://stackoverflow.com/questions/28516101/django-how-to-pass-template-variable-to-javascript-onclick-routine
+
+- Form creation  
+  https://medium.com/jungletronics/a-django-blog-in-vs-code-3b6fc8eb19aa  
+
+  https://www.javatpoint.com/django-crud-application  
+
+  https://forum.djangoproject.com/t/how-to-restrict-django-staff-user-to-edit-or-delete-others-staff-user-post-from-admin-panel/7887  
+
+  https://www.youtube.com/watch?v=TAH01Iy5AuE
+
+- CRUD functionality  
+https://www.youtube.com/watch?v=N6jzspc2kds&t=3387s  
 
 
 

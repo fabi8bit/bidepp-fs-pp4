@@ -7,8 +7,6 @@ from .forms import CommentForm, CreateReviewForm, CreateHotelForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
-
-
 class ReviewList(generic.ListView):
     model = Review
     queryset = Review.objects.filter(status=1).order_by('-created_on')
@@ -27,7 +25,7 @@ class ManageList(UserPassesTestMixin, generic.ListView):
 
     def test_func(self):
         return self.request.user.is_superuser
-        
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['review'] = Review.objects.filter(status=1).order_by(
@@ -205,7 +203,7 @@ def hotel_delete(request, id):
 
 
 def search_hotels(request):
-    
+
     if request.method == "POST":
         searched = request.POST['searched']
         hotels = Hotel.objects.filter(country__icontains=searched)
