@@ -18,13 +18,12 @@ I employed Google's Developer Tools to verify the proper functioning of all elem
 
 | Page | Result | Evidence |
 | :--- | :--- | :---: |
-| Home Page | Pass| [Home Page Validation]() |
-| Blog Page | Pass | [Privacy Page Validation]() |
-| Hotels | Pass | [Terms & Conditions Page Validation]() |
-| Register | Pass | [Delivery Page Validation]() |
-| Contact Form Page | Pass | [Contact Form Page Validation](https://validator.w3.org/nu/?doc=https%3A%2F%2Fseaside-sewing.herokuapp.com%2Fcontact%2F)|
-| Log in| Pass | [Contact Success Page Validation](documentation/testing/validation/html/contact-success-validation.png) |
-| Manage | Pass |[Product Page Validation](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fseaside-sewing.herokuapp.com%2Fproducts%2F%3Fcategory%3Dby_the_metre) |
+| Home Page | Pass| [Home Page Validation](https://validator.w3.org/nu/?doc=https%3A%2F%2Fbidepp-cc1716a9edf6.herokuapp.com%2F) |
+| Blog Page | Pass | [Privacy Page Validation](https://validator.w3.org/nu/?doc=https%3A%2F%2Fbidepp-cc1716a9edf6.herokuapp.com%2Fblog%2F) |
+| Hotels | Pass | [Terms & Conditions Page Validation](https://validator.w3.org/nu/?doc=https%3A%2F%2Fbidepp-cc1716a9edf6.herokuapp.com%2Fhotels%2F) |
+| Register | Pass | [Delivery Page Validation](https://validator.w3.org/nu/?doc=https%3A%2F%2Fbidepp-cc1716a9edf6.herokuapp.com%2Faccounts%2Fsignup%2F) |
+| Log in| Pass | [Contact Success Page Validation](https://validator.w3.org/nu/?doc=https%3A%2F%2Fbidepp-cc1716a9edf6.herokuapp.com%2Faccounts%2Flogin%2F) |
+| Manage | Pass |[Product Page Validation](https://validator.w3.org/nu/?doc=https%3A%2F%2Fbidepp-cc1716a9edf6.herokuapp.com%2Flist%2F) |
 
 
 ### CSS
@@ -33,7 +32,7 @@ I employed Google's Developer Tools to verify the proper functioning of all elem
 
 | File | Result | Evidence |
 | :--- | :--- | :---: |
-| static/css/style.css | Pass | [static/css/style.css validation](documentation/testing/validation/css/base-validation.png) |
+| static/css/style.css | Pass | [css check](readme_assets/readme_img/css-check.png) |
 
 
 ### JavaScript
@@ -42,8 +41,8 @@ I employed Google's Developer Tools to verify the proper functioning of all elem
 
 | File | Result | Evidence |
 | :--- | :--- | :---: |
-| static/js/js/maps.js | Pass | [maps.js](documentation/testing/validation/js/checkout-stripe-elements-validation.png) |
-| static/js/js/script.js  | Pass |[script.js](documentation/testing/validation/js/profiles-countryfield-validation.png) |
+| static/js/js/maps.js | Pass | [maps.js](readme_assets/readme_img/map-js-test.png) |
+| static/js/js/script.js  | Pass |[script.js](readme_assets/readme_img/script-js-test.png) |
 
 ### Python
 
@@ -52,36 +51,34 @@ I employed Google's Developer Tools to verify the proper functioning of all elem
 | File | Result | Evidence |
 | :--- | :--- | :---: |
 | **BIDEPP** |
-| settings.py | Pass | [settings.py validation](documentation/testing/validation/python/settings-validation.png) |
-| urls.py | Pass | [urls.py validation](documentation/testing/validation/python/seaside_sewing-urls-validation.png) |
+| settings.py | Pass | [settings.py validation](readme_assets/readme_img/settings-py.png) |
+| urls.py | Pass | [urls.py validation](readme_assets/readme_img/urls-py.png) |
 | **BLOG** |
-| forms.py | Pass | [apps.py validation](documentation/testing/validation/python/bag-apps-validation.png) |
-| models.py | Pass | [contexts.py validation](documentation/testing/validation/python/bag-contexts-validation.png) |
-| urls.py | Pass | [urls.py validation](documentation/testing/validation/python/bag-urls-validation.png) |
-| views.py | Pass | [views.py validation](documentation/testing/validation/python/bag-views-validation.png) |
+| forms.py | Pass | [apps.py validation](readme_assets/readme_img/form-py.png) |
+| models.py | Pass | [contexts.py validation](readme_assets/readme_img/models-py.png) |
+| urls.py | Pass | [urls.py validation](readme_assets/readme_img/urls-blog-py.png) |
+| views.py | Pass | [views.py validation](readme_assets/readme_img/views-py.png) |
 
 ### Lighthouse
 #### Desktop Results
 
 | Page | Result |
 | :--- | :--- |
-| Home Page | ![Home Desktop Lighthouse Testing](documentation/testing/lighthouse/home-desk-lh-val.png) |
-| Reviews | ![Reviews Desktop Lighthouse Testing](documentation/testing/lighthouse/products-desk-lh-val.png) |
-| Hotels | ![Hotels Detail Desktop Lighthouse Testing](documentation/testing/lighthouse/product-detail-desk-lh-val.png) |
-| Login | ![Login Desktop Lighthouse Testing](documentation/testing/lighthouse/add-product-desk-lh-val.png) |
-| Register | ![Register Desktop Lighthouse Testing](documentation/testing/lighthouse/edit-product-desk-lh-val.png) |
-| Manage | ![Manage Desktop Lighthouse Testing](documentation/testing/lighthouse/bag-desk-lh-val.png) |
+| Home Page | ![Home Desktop Lighthouse Testing](readme_assets/readme_img/light-home-desk.png) |
+| Reviews | ![Reviews Desktop Lighthouse Testing](readme_assets/readme_img/light-blog-desk.png) |
+| Hotels | ![Hotels Detail Desktop Lighthouse Testing](readme_assets/readme_img/light-hotel-desk.png) |
+| Details | ![Hotels Detail Desktop Lighthouse Testing](readme_assets/readme_img/light-detail-desk.png) |
+
 
 #### Mobile Results
 
 | Page | Result |
 | :--- | :--- |
-| Home Page | ![Home Mobile Lighthouse Testing](documentation/testing/lighthouse/home-desk-lh-val.png) |
-| Reviews | ![Reviews Mobile Lighthouse Testing](documentation/testing/lighthouse/products-desk-lh-val.png) |
-| Hotels | ![Hotels Mobile Lighthouse Testing](documentation/testing/lighthouse/product-detail-desk-lh-val.png) |
-| Login | ![Login Mobile Lighthouse Testing](documentation/testing/lighthouse/add-product-desk-lh-val.png) |
-| Register | ![Register Mobile Lighthouse Testing](documentation/testing/lighthouse/edit-product-desk-lh-val.png) |
-| Manage | ![Manage Mobile Lighthouse Testing](documentation/testing/lighthouse/bag-desk-lh-val.png) |
+| Home Page | ![Home Mobile Lighthouse Testing](readme_assets/readme_img/light-home-mob.png) |
+| Reviews | ![Reviews Mobile Lighthouse Testing](readme_assets/readme_img/light-blog-mob.png) |
+| Hotels | ![Hotels Mobile Lighthouse Testing](readme_assets/readme_img/light-hotel-mob.png) |
+| Details | ![Hotels Detail Mobile Lighthouse Testing](readme_assets/readme_img/light-detail-mob.png) |
+
 
 ### Wave
 

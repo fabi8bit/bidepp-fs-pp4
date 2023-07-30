@@ -146,25 +146,27 @@ For the colors and typography I decided to use a minimalistic style in order to 
 ### *Wireframes and actual pages*
 
 * Base Template: It contains the header and the footer of the whole site. The content of the other pages are injected into this template using the template tags
-![Wireframe_base]()
+![Wireframe_base](readme_assets/readme_img/navbar.png)
 
 * Index: it's the Home page of the site. It contains a brief explanation Bidepp and a button to access the blog. At the bottom it features a paginated list of the 3 most recent Hotels added to the database. The elements are clickable and they are linked to the detail view of the specific Hotel
-![Wireframe_index]()
+![Wireframe_index](readme_assets/readme_img/home-mob.png)
 
 * Reviews: In this page are listed all the reviews from the most recent to the oldest. All the elements are clickable and linked to the specific review. For UX reasons the posts are paginated by 6 reviews. If there are more than 6 reviews, a clickable arrow will appear at the bottom of the section to access the next reviews.
-![Wireframe_blog]()
+![Wireframe_blog](readme_assets/readme_img/blog.png)
 
 * Hotels: This is the list of all the Hotels reviewed in the blog. Here is applyed the same logic as for the reviews. It's present a search bar where the user can type in the nation in order to display all the reviewed hotels available for this nation.
-![Wireframe_hotel]()
+
+* Clicking on one of the element will show the details for the post
+![Wireframe_hotel](readme_assets/readme_img/sing-post.png)
 
 * Register: A user can register an account here. A registered user can commentate and like the posts.
-![Wireframe_register]()
+
 
 * Login: If an account is already registered, a user can log in from this page.
-![Wireframe_login]()
+
 
 * Manage: This link is only visible if a User is logged in as Superuser. On this page are listed all the reviews and from here is possible to operate all the CRUD functionality. On the left up corner there's a button to create a new review, while beside every listed reviews (on the left side) are displayed an edit button and a trash can button which are respectively used to edit and delete the reviews. On the right up corner is present another button to add new hotels to be reviewed. Beside the hotels name (right side) are displayed the same button as for the Reviews but this time are for editing, and deleting the hotels. Deleting the Hotels will result on a cascade deletion of the related reviews.
-![Wireframe_manage]()
+![Wireframe_manage](readme_assets/readme_img/manage-page.png)
 
 
 
